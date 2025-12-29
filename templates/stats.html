@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nation Stats</title>
+    <style>
+        body {
+            text-align: center;
+            font-family: 'Times New Roman', Times, serif;
+        }
+        .subtitle {
+            color: gray
+        }
+        h2 {
+            margin-bottom: 0.5em;
+        }
+        span {
+            font-size: 1.5em;
+            font-weight: bold;
+        }
+        img {
+            border: 5px solid black;
+        }
+        .img-sub {
+            font-size: 1.2rem;
+            margin-top: 0.5rem;
+        }
+
+        table, th, td {
+            border: 1px solid black;
+            border-collapse: collapse;
+        }
+        th, td {
+            padding: 0.5em;
+        }
+
+        td:nth-child(1), th {
+            font-size: 1.5em;
+            font-weight: bold;
+        }
+        td:nth-child(2) {
+            font-size: 1.3em;
+        }
+        td:nth-child(3) {
+            font-size: 1.5em;
+        }
+        td:nth-child(4) {
+            font-size: 1.5em;
+        }
+    </style>
+</head>
+<body>
+    <h1>Nation Stats</h1>
+    <p class="subtitle">
+        A list of all nations and inter-nation unions of the world recognized by the American Union. Each nation/union listed contains 
+        various stats pertaining to the nation/union. Note that descriptions for military can be subjective.
+    </p>
+
+    <br>
+
+    <section id="unions">
+        <h2>Unions</h2>
+        <p class="subtitle">Union military, reserve, and land is separate from the military and wealth of the member nations unless otherwise stated.</p>
+        <table>
+            <tr>
+                <th>Name</th>
+                <th>Leader</th>
+                <th>Reserve</th>
+                <th>Reps.</th>
+                <th>Military</th>
+                <th>Land</th>
+                <th>Members</th>
+                <th>Other Information</th>
+            </tr>
+
+            {% for union_name in colony_stats["Unions"] %}
+            <tr>
+                {% set union = colony_stats["Unions"][union_name] %}
+
+                <td>{{ union_name }}</td>
+                <td>{{ union.Leader }}</td>
+                <td>${{ union.Reserve }}T</td>
+                <td>{{ union["Reps."] }}</td>
+                <td>{{ union.Military }}</td>
+                <td>{{ union.Land }}</td>
+                <td>
+                    {{ ', '.join(union.Members) }}
+                    {% if union["Partial Members"] != [] %}
+                        (Partial: {{', '.join(union["Partial Members"])}})
+                    {% endif %}
+
+                </td>
+                <td>{{ union["Other Information"] }}</td>
+            </tr>
+            {% endfor %}
+
+        </table>
+    </section>
+
+    <br>
+
+    <section id="nations">
+        <h2>Nations</h2>
+        <p class="subtitle">Wealth is defined as liquid assets and nation investments are counted in both the investor’s and the investee’s wealth.</p>
+        <table>
+            <tr>
+                <th>Name</th>
+                <th>Leader</th>
+                <th>Wealth</th>
+                <th>Citizens</th>
+                <th>Military</th>
+                <th>Location/Land</th>
+                <th>Other Information</th>
+            </tr>
+
+            {% for nation_name in colony_stats["Nations"] %}
+                
+            {% set nation = colony_stats["Nations"][nation_name] %}
+            <tr style="background-color: {{nation['Background Color']}}">
+                <td>{{ nation_name }}</td>
+                <td>{{ nation.Leader }}</td>
+                <td>${{ nation.Wealth }}T</td>
+                <td>{{ nation.Citizens }}M</td>
+                <td>{{ nation.Military }}</td>
+                <td>{{ nation["Location/Land"] }}</td>
+                <td>{{ nation["Other Information"] }}</td>
+            </tr>
+            {% endfor %}
+
+        </table>    
+    </section>
+
+    <br><br>
+
+    <img src="static/colony-map.png" width="1000">
+    <p class="img-sub">Striped means disputed territory.</p>
+
+    <br>
+
+    <span>
+        ALL THE AUTs: <a href="https://docs.google.com/document/d/1HonVWkh0uigSgPBY7LkX341vakJLNIwUU9cFHDL80BE/edit?tab=t.0">AUT 0 - THE TREATY LIST</a>
+    </span>
+    <br>
+    <span>
+        ALL THE DGDs: <a href="https://docs.google.com/document/d/1HonVWkh0uigSgPBY7LkX341vakJLNIwUU9cFHDL80BE/edit?tab=t.3cfisz6xplgo">AUT 0.2 - THE DGD LIST</a>
+    </span>
+    
+</body>
+</html>
