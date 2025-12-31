@@ -1,7 +1,11 @@
 import json, datetime, random, pprint
 
-with open("stats.json", "r") as colony_stats:
-    colony_stats = json.load(colony_stats)
+try:
+    with open("data/stats.json", "r") as colony_stats:
+        colony_stats = json.load(colony_stats)
+except FileNotFoundError:
+    with open("stats.json", "r") as colony_stats:
+        colony_stats = json.load(colony_stats)
 
 last_updated = datetime.datetime.strptime(colony_stats["last_updated"], "%Y-%m-%d")
 if datetime.datetime.now() - last_updated > datetime.timedelta(days=30):
@@ -17,7 +21,7 @@ if datetime.datetime.now() - last_updated > datetime.timedelta(days=30):
         colony["Citizens"] += int(random.uniform(0 - colony["Citizens"] / 20, colony["Citizens"] / 20))
 
 
-    # Update union reserve and reps
+    # Update union reserve
     for union in colony_stats["Unions"]:
         union = colony_stats["Unions"][union]
 
@@ -25,11 +29,21 @@ if datetime.datetime.now() - last_updated > datetime.timedelta(days=30):
             union["Reserve"] += random.uniform(0 - union["Reserve"] / 20, union["Reserve"] / 20)
             union["Reserve"] = float(f"{union[f'Reserve']:.2f}")
 
+
+# Calculate union reps
+def calculate_reps():
+    for union in colony_stats["Unions"]:
+        union = colony_stats["Unions"][union]
+
         if union["Reps."] != "N/A":
             total_reps = sum([colony_stats["Nations"][member]["Citizens"] for member in union["Members"]])
             total_reps *= 1000000 / union["Rep. Ratio"]
             union["Reps."] = f"{int(total_reps):,d}"
 
-with open("new_stats.json", "w") as new_stats:
-    new_stats.write(json.dumps(colony_stats, indent=4))
+    with open("data/stats.json", "w") as new_stats:
+        new_stats.write(json.dumps(colony_stats, indent=4))
+        
+calculate_reps()
+
+
                 

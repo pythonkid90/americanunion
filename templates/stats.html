@@ -4,21 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Nation Stats</title>
+    <link href="static/styles.css" rel="stylesheet">
+
     <style>
-        body {
-            text-align: center;
-            font-family: 'Times New Roman', Times, serif;
-        }
-        .subtitle {
-            color: gray
-        }
-        h2 {
-            margin-bottom: 0.5em;
-        }
-        span {
-            font-size: 1.5em;
-            font-weight: bold;
-        }
         img {
             border: 5px solid black;
         }
@@ -26,6 +14,13 @@
             font-size: 1.2rem;
             margin-top: 0.5rem;
         }
+        /*
+        div[contenteditable="true"] {
+            display: flex;
+            align-items: center;
+
+        }
+            */
 
         table, th, td {
             border: 1px solid black;
@@ -34,6 +29,10 @@
         th, td {
             padding: 0.5em;
         }
+        th, td:hover {
+            filter: brightness(75%); 
+        }
+        
 
         td:nth-child(1), th {
             font-size: 1.5em;
@@ -54,7 +53,8 @@
     <h1>Nation Stats</h1>
     <p class="subtitle">
         A list of all nations and inter-nation unions of the world recognized by the American Union. Each nation/union listed contains 
-        various stats pertaining to the nation/union. Note that descriptions for military can be subjective.
+        various stats pertaining to the nation/union. Note that descriptions for military can be subjective. Click on a cell to edit that cell,
+        and click anywhere else to save your changes.
     </p>
 
     <br>
@@ -78,20 +78,20 @@
             <tr>
                 {% set union = colony_stats["Unions"][union_name] %}
 
-                <td>{{ union_name }}</td>
-                <td>{{ union.Leader }}</td>
-                <td>${{ union.Reserve }}T</td>
-                <td>{{ union["Reps."] }}</td>
-                <td>{{ union.Military }}</td>
-                <td>{{ union.Land }}</td>
-                <td>
+                <td class="{{union_name}} name">{{ union_name }}</td>
+                <td class="{{union_name}} leader">{{ union.Leader }}</td>
+                <td class="{{union_name}} reserve">${{ union.Reserve }}T</td>
+                <td class="{{union_name}} reps">{{ union["Reps."] }}</td>
+                <td class="{{union_name}} military">{{ union.Military }}</td>
+                <td class="{{union_name}} land">{{ union.Land }}</td>
+                <td class="{{union_name}} members">
                     {{ ', '.join(union.Members) }}
                     {% if union["Partial Members"] != [] %}
                         (Partial: {{', '.join(union["Partial Members"])}})
                     {% endif %}
 
                 </td>
-                <td>{{ union["Other Information"] }}</td>
+                <td class="{{union_name}} other">{{ union["Other Information"] }}</td>
             </tr>
             {% endfor %}
 
@@ -118,13 +118,13 @@
                 
             {% set nation = colony_stats["Nations"][nation_name] %}
             <tr style="background-color: {{nation['Background Color']}}">
-                <td>{{ nation_name }}</td>
-                <td>{{ nation.Leader }}</td>
-                <td>${{ nation.Wealth }}T</td>
-                <td>{{ nation.Citizens }}M</td>
-                <td>{{ nation.Military }}</td>
-                <td>{{ nation["Location/Land"] }}</td>
-                <td>{{ nation["Other Information"] }}</td>
+                <td class="{{nation_name}} name">{{ nation_name }}</td>
+                <td class="{{nation_name}} leader">{{ nation.Leader }}</td>
+                <td class="{{nation_name}} wealth">${{ nation.Wealth }}T</td>
+                <td class="{{nation_name}} citizens">{{ nation.Citizens }}M</td>
+                <td class="{{nation_name}} military">{{ nation.Military }}</td>
+                <td class="{{nation_name}} land">{{ nation["Location/Land"] }}</td>
+                <td class="{{nation_name}} other">{{ nation["Other Information"] }}</td>
             </tr>
             {% endfor %}
 
@@ -146,5 +146,23 @@
         ALL THE DGDs: <a href="https://docs.google.com/document/d/1HonVWkh0uigSgPBY7LkX341vakJLNIwUU9cFHDL80BE/edit?tab=t.3cfisz6xplgo">AUT 0.2 - THE DGD LIST</a>
     </span>
     
+    <script>
+        let cellsEdited = new Map();
+        for (const element of document.querySelectorAll("td")) {
+            element.addEventListener("click", function(event) {
+                let cellToEdit = event.target;
+                cellToEdit.setAttribute("contenteditable", "true");
+                cellToEdit.setAttribute("spellcheck", "false");
+                cellToEdit.focus();
+            })
+            element.addEventListener("blur", function(event) {
+                let cellToEdit = event.target;
+                cellsEdited.set(cellToEdit.className, cellToEdit.innerHTML);
+                navigator.sendBeacon("/stats/save", JSON.stringify(Object.fromEntries(cellsEdited)));
+                
+            })
+        }
+        
+    </script>
 </body>
 </html>
