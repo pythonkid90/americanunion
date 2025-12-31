@@ -1,4 +1,4 @@
-import json, datetime, random, pprint
+import json, datetime, random, pathlib
 
 try:
     with open("data/stats.json", "r") as colony_stats:
@@ -40,9 +40,12 @@ def calculate_reps():
             total_reps *= 1000000 / union["Rep. Ratio"]
             union["Reps."] = f"{int(total_reps):,d}"
 
+    stats_path = pathlib.Path("data/")
+    stats_path.mkdir(parents=True, exist_ok=True)
+
     with open("data/stats.json", "w") as new_stats:
         new_stats.write(json.dumps(colony_stats, indent=4))
-        
+
 calculate_reps()
 
 
