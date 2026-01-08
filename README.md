@@ -21,7 +21,7 @@ A website I am making for the fictional American Union that has been constructed
 - A person lookup listing notable people from AUTs and DGDs, using descriptions from those documents as well as creating age, gender, nationality, etc.
 - An election generator to streamline the creation of DGD election files, allowing for multiple formattting styles (UCN Style, Arjun Style, Freezing Style, House, Propositions)
 - A backend API to power the election generator and other small things like AUT/DGD formatting, powered by Python and Rust code.
-- Redirect/proxying from colonyhub.netlify.app and americanunion.netlify.app.
+- Redirect/proxying from colonyhub.netlify.app and americanunion.netlify.app. Maybe also hosting on Back4App.s
 
 ## Known Bugs
 - You cannot edit nation names (it returns an internal 500 error)

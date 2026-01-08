@@ -1,5 +1,7 @@
 {
     "last_updated": "2025-12-28",
+    "Total Assets": 190.02,
+    "Total Population": 2752,
     "Unions": {
         "American Union (A.U.)": {
             "Leader": "Representatives",
@@ -11,9 +13,9 @@
                 "Desemar",
                 "Medilli",
                 "Couria",
-                "Jonah\u2019s Colony",
+                "Jonah’s Colony",
                 "Rivertopia",
-                "Arjun\u2019s Colony",
+                "Arjun’s Colony",
                 "Colony Freezing",
                 "United Cold Nation"
             ],
@@ -41,14 +43,14 @@
                 "North Calidum"
             ],
             "Partial Members": [],
-            "Other Information": "Similar to Jonah\u2019s Colony in terms of innovation, industries and government, after the Union\u2019s territory was conquered by John Sith and split into many countries. See DGD-B CA.C21JN - WHO WE ARE and DGD-B CA.C21JU - THE CALIDUM UNION.",
+            "Other Information": "Similar to Jonah’s Colony in terms of innovation, industries and government, after the Union’s territory was conquered by John Sith and split into many countries. See DGD-B CA.C21JN - WHO WE ARE and DGD-B CA.C21JU - THE CALIDUM UNION.",
             "Rep. Ratio": 50000
         },
-        "Post War Arjun and Calidum  States (PWACIS)": {
+        "Post War Arjun and Calidum States (PWACIS)": {
             "Leader": "Arjun Thimmakondu and John Sith",
             "Reserve": 0.0,
             "Reps.": "N/A",
-            "Military": "Uses Calidum Union military + Arjun\u2019s Colony military for a Jonah level military.",
+            "Military": "Uses Calidum Union military + Arjun’s Colony military for a Jonah level military.",
             "Land": "None.",
             "Members": [
                 "Peninsular Island",
@@ -69,15 +71,15 @@
                 "New Cameron Territory",
                 "Great Routira"
             ],
-            "Other Information": "Nations pay taxes to the nation/union that gave them independence. These nations must also supply additional financial or military aid to their parent nation/union when the nation/union requests it. Military aid amount is decided by the PWACIS, and financial aid is usually up to the nation and can be as low as $1000, but rarely, PWCAIS can force up to a 10% wealth contribution. In return, nations can choose to vote in their parent nation\u2019s elections, and PWACIS supplies great military and financial defense to the member nations from Calidum and Arjun\u2019s Colony.",
+            "Other Information": "Nations pay taxes to the nation/union that gave them independence. These nations must also supply additional financial or military aid to their parent nation/union when the nation/union requests it. Military aid amount is decided by the PWACIS, and financial aid is usually up to the nation and can be as low as $1000, but rarely, PWCAIS can force up to a 10% wealth contribution. In return, nations can choose to vote in their parent nation’s elections, and PWACIS supplies great military and financial defense to the member nations from Calidum and Arjun’s Colony.",
             "Rep. Ratio": "N/A"
         }
     },
     "Nations": {
         "Desemar": {
             "Leader": "Adrien Blevins",
-            "Wealth": 11.52,
-            "Citizens": 238,
+            "Wealth": 10.91,
+            "Citizens": 196,
             "Military": "Tiny military. Will attempt to move Japan and deliver treaties by missiles during times of war. Mainly focuses on research for the war.",
             "Location/Land": "Southwest Northern America (except Texas, California, Wyoming + panhandle), as well as Mexico and western Asian Russia.",
             "Other Information": "One of the three A.U. founders. Known for risky feats (moving Japan, spending everything on a moon mission) and massive technological advances (solar farm).",
@@ -86,28 +88,28 @@
         },
         "Medilli": {
             "Leader": "Senate, People, and Court",
-            "Wealth": 3.61,
-            "Citizens": 64,
+            "Wealth": 4.42,
+            "Citizens": 77,
             "Military": "Rusty, trusty, dusty, crusty, busty, gusty, lusty, and musty military.",
             "Location/Land": "Midwest-South Northern America.",
-            "Other Information": "Made from Cameron\u2019s colony after Kye bought it. Special government structure with no leader, but instead a senate, direct voting by the people, and a court.",
+            "Other Information": "Made from Cameron’s colony after Kye bought it. Special government structure with no leader, but instead a senate, direct voting by the people, and a court.",
             "Affiliation": "American Union",
             "Background Color": "#FF9EC9"
         },
         "Couria": {
             "Leader": "Dina Harrison",
-            "Wealth": 5.66,
-            "Citizens": 277,
+            "Wealth": 5.42,
+            "Citizens": 253,
             "Military": "Technologically and strategically advanced nonviolent sub-Calidum military.",
             "Location/Land": "Most eastern south Northern America.",
-            "Other Information": "Made from Cameron\u2019s colony after Kye bought it. Known for economic stability, having amazing business and trade cities.",
+            "Other Information": "Made from Cameron’s colony after Kye bought it. Known for economic stability, having amazing business and trade cities.",
             "Affiliation": "American Union",
             "Background Color": "#B4A7D6"
         },
-        "Jonah\u2019s Colony": {
+        "Jonah’s Colony": {
             "Leader": "Jonah Smith",
-            "Wealth": 28.2,
-            "Citizens": 407,
+            "Wealth": 27.21,
+            "Citizens": 398,
             "Military": "The ultimate nation military, only surpassed by the A.U. itself.",
             "Location/Land": "Hawaii and Asia (except New Guinea, Indian Subcontinent + Afghanistan, Sumatra, Borneo, Indochina excluding Vietnam and Laos, Japan, Korea, Taiwan, and the middle east except the east Arabian Peninsula).",
             "Other Information": "Cut ties with the Jonah Empires long ago. Known for a large landmass, high wealth, leading a former empire, and farming. Recently lost a lot of land to Calidum and the Arjun states.",
@@ -116,18 +118,18 @@
         },
         "Rivertopia": {
             "Leader": "River Riordan",
-            "Wealth": 5.72,
-            "Citizens": 42,
+            "Wealth": 5.29,
+            "Citizens": 38,
             "Military": "Large sized and very modern military, used to defeat Lake.",
             "Location/Land": "Southern Oceania excluding Australia and the Caribbean.",
-            "Other Information": "For the colony\u2019s collapse, see AUT 9 and its two subtreaties. One of the three A.U. founders.",
+            "Other Information": "For the colony’s collapse, see AUT 9 and its two subtreaties. One of the three A.U. founders.",
             "Affiliation": "American Union",
             "Background Color": "#D9EAD3"
         },
-        "Arjun\u2019s Colony": {
+        "Arjun’s Colony": {
             "Leader": "Arjun Thimmakondu (PM) & Sarah Pinklizard (Pres.)",
             "Wealth": 17.31,
-            "Citizens": 434,
+            "Citizens": 446,
             "Military": "Modern and very large army, along with an air force and cyber force. Sub-Jonah level.",
             "Location/Land": "South Australia, Indian subcontinent + Afghanistan, middle northwestern Africa, Wyoming + panhandle, and SoCal.",
             "Other Information": "Powerful, developing, and very progressive nation, known for quick change and the Vulture party. Re-created 2024.11.05 (see AUT 13 for more info).",
@@ -136,8 +138,8 @@
         },
         "Colony Freezing": {
             "Leader": "Frazier Barton",
-            "Wealth": 9.26,
-            "Citizens": 192,
+            "Wealth": 9.16,
+            "Citizens": 182,
             "Military": "Large, strong, and stable military!",
             "Location/Land": "Northeast North America.",
             "Other Information": "No longer related to the Freezing Empire. See THE FREEZING ELECTIONS (DGD LIST) for elections.",
@@ -146,8 +148,8 @@
         },
         "United Cold Nation": {
             "Leader": "Dani Bryony",
-            "Wealth": 10.66,
-            "Citizens": 202,
+            "Wealth": 10.21,
+            "Citizens": 201,
             "Military": "Uses a small but very effective peaceful military, trying not to resort to violence.",
             "Location/Land": "Northwest North America excluding the most northwest.",
             "Other Information": "See THE UCN ELECTIONS (DGD LIST). Known for these elections, which can affect the course of the entire American Union.",
@@ -155,19 +157,19 @@
             "Background Color": "#E6B8AF"
         },
         "Cogitium 2.0": {
-            "Leader": "Frazier Barton",
-            "Wealth": 1.15,
-            "Citizens": 4,
-            "Military": "No military, has amazing tech.",
+            "Leader": "Frazier Barton and Tridiv the Great",
+            "Wealth": 1.85,
+            "Citizens": 6,
+            "Military": "300K titanium AI bots as well as carbon fiber-armored humans with powered exoaskeletons.",
             "Location/Land": "Greater Texas.",
-            "Other Information": "Created by AustraGPT 3.0 as a \u201ctech supercenter\u201d, but the country was taken over by the human Frazier Barton to widen scope and AustraGPT now owns the company Cogitium only.",
+            "Other Information": "Created by AustraGPT 3.0 as a “tech supercenter”, but the country was taken over by the human Frazier Barton to widen scope and AustraGPT now owns the company Cogitium only. Frazier Barton recently appointed Tridiv as a co-leader after there was a strong movemment for more power and military inside thet country. 200K bots currently working in places outside the military.",
             "Affiliation": "American Union (Partial)",
             "Background Color": "#53D4FF"
         },
         "Muzak Republic": {
             "Leader": "Harry Muzak",
             "Wealth": 1.07,
-            "Citizens": 26,
+            "Citizens": 25,
             "Military": "Sub-Calidum level military, very powerful.",
             "Location/Land": "Easternmost South America.",
             "Other Information": "Formerly the Non-Empire led by Jared Muzak, only taking land if the people allowed it and started no wars, following AUT 6. When the empire fell they lost a lot of their power, then changed to be a republic led by Harry Muzak.",
@@ -177,7 +179,7 @@
         "Great Routira": {
             "Leader": "Trenweu Bofynew",
             "Wealth": 3.55,
-            "Citizens": 26,
+            "Citizens": 22,
             "Military": "Sticks and stones.",
             "Location/Land": "Northern Australia.",
             "Other Information": "Oldest civilization still around. Their people moved from Australia to Asia to South America, and now finally back to Australia. Language has no vowels, so transliteration of names is weird. Very different from Routia, which stayed in South America. See AUT 1.1 for more info. Technically under PWACIS, as the eastern province made an agreement for $1T in investment so that Arjun would get 5% taxes for the rich and 0.5% for the middle class as well as PWACIS control in the province.",
@@ -187,7 +189,7 @@
         "Nacu": {
             "Leader": "Maria Garcia",
             "Wealth": 0.56,
-            "Citizens": 4,
+            "Citizens": 5,
             "Military": "Tiny developing military.",
             "Location/Land": "Northern Central America.",
             "Other Information": "Created after Arjun conquered Jonah, making this nation part of PWACIS. Pays 5% taxes to Arjun.",
@@ -205,12 +207,12 @@
             "Background Color": "#A4C2F4"
         },
         "Infrigor": {
-            "Leader": "Radio Star (dead)",
-            "Wealth": 0.54,
-            "Citizens": 10,
+            "Leader": "Esi Closin",
+            "Wealth": 0.67,
+            "Citizens": 8,
             "Military": "A.U. backup military.",
-            "Location/Land": "Alaska but going east \u00bc the way to the east coast.",
-            "Other Information": "Formerly Cold Place Thing. Home to beautiful landscapes and mountains in the far north. Name means \u201cIn the cold\u201d in Latin. Made an agreement for $1.5T in investment so that Kye would get 7% of proceeds.",
+            "Location/Land": "Alaska but going east ¼ the way to the east coast.",
+            "Other Information": "Formerly Cold Place Thing. Home to beautiful landscapes and mountains in the far north. Name means “In the cold” in Latin. Made an agreement for $1.5T in investment so that Kye would get 7% of proceeds.",
             "Affiliation": "American Union (Partial)",
             "Background Color": "#E28EA4"
         },
@@ -225,9 +227,9 @@
             "Background Color": "#FFF2CC"
         },
         "New Cameron Territory": {
-            "Leader": "Lohan Th\u00e9a",
-            "Wealth": 11.37,
-            "Citizens": 22,
+            "Leader": "Lohan Théa",
+            "Wealth": 11.27,
+            "Citizens": 25,
             "Military": "Medium sized, strong, and stable military!",
             "Location/Land": "Westernmost Europe mainland.",
             "Other Information": "Formerly owned by Cameron, one of the three A.U. founders. Cameron gave up the nation after he left the A.U., so the nation reformed under Lohan Thea. Technically under PWACIS, as the Portugal province made an agreement for $6T in investment so that Arjun would get 12% of proceeds, PWACIS control in the province, and some government power.",
@@ -235,42 +237,42 @@
             "Background Color": "#C9DAF8"
         },
         "Hippity": {
-            "Leader": "Doggity XXV Th\u00e9a",
-            "Wealth": 1.07,
-            "Citizens": 12,
+            "Leader": "Doggity XXV Théa",
+            "Wealth": 1.23,
+            "Citizens": 19,
             "Military": "Medieval imperial military.",
             "Location/Land": "Western non-mainland Europe, including Iceland and the British Isles.",
-            "Other Information": "Created when Kye\u2019s Colony and the NCT split up their territories. A symbolic continuation of the Hippity Hoppity civilization that lasted over 2 thousand years before being conquered by the Jonahs. Made an agreement for $1T in investment so that Kye would get 5% of proceeds.",
+            "Other Information": "Created when Kye’s Colony and the NCT split up their territories. A symbolic continuation of the Hippity Hoppity civilization that lasted over 2 thousand years before being conquered by the Jonahs. Made an agreement for $1T in investment so that Kye would get 5% of proceeds.",
             "Affiliation": "",
             "Background Color": "#A4AEF4"
         },
         "Routira-Bredian Democracy": {
-            "Leader": "[REDACTED]",
-            "Wealth": 3.47,
-            "Citizens": 32,
+            "Leader": "Con Man",
+            "Wealth": 4.01,
+            "Citizens": 35,
             "Military": "Ancient imperial military.",
             "Location/Land": "Southernmost Middle Europe.",
-            "Other Information": "Created when Kye\u2019s Colony and the NCT split up their territories. Technically under PWACIS, as the North Italy province made an agreement for $3.5T in investment so that Arjun would get 10% of proceeds, PWACIS control in the province, and some government power.",
+            "Other Information": "Created when Kye’s Colony and the NCT split up their territories. Technically under PWACIS, as the North Italy province made an agreement for $3.5T in investment so that Arjun would get 10% of proceeds, PWACIS control in the province, and some government power.",
             "Affiliation": "PWACIS",
             "Background Color": "#BD9881"
         },
         "European Cultural Union": {
             "Leader": "Barbagary",
-            "Wealth": 0.05,
-            "Citizens": 21,
+            "Wealth": 0.21,
+            "Citizens": 23,
             "Military": "Small military.",
             "Location/Land": "Middlemost Europe.",
-            "Other Information": "Formerly True Middle Place. Created when Kye\u2019s Colony and the NCT split up their territories. Known for diverse cultures, similar to The Kameropotamias. Made an agreement for $1T in investment so that NCT would get 7% of proceeds.",
+            "Other Information": "Formerly True Middle Place. Created when Kye’s Colony and the NCT split up their territories. Known for diverse cultures, similar to The Kameropotamias. Made an agreement for $1T in investment so that NCT would get 7% of proceeds.",
             "Affiliation": "",
             "Background Color": "#D58B90"
         },
         "Scandinavia But Better": {
-            "Leader": "Video Star (in prison for murder)",
+            "Leader": "River Lozada",
             "Wealth": 1.66,
-            "Citizens": 10,
-            "Military": "Tiny military if you don\u2019t count fishing ships that can be repurposed.",
+            "Citizens": 13,
+            "Military": "Tiny military if you don’t count fishing ships that can be repurposed.",
             "Location/Land": "Northern Middle Europe, including Scandinavia/Fennoscandia.",
-            "Other Information": "Their motto is \u201cunio in montibus et in campis et mare\u201d. Created when Kye\u2019s Colony and the NCT split up their territories. Made an agreement for $1.5T in investment so that NCT would get 10% of proceeds.",
+            "Other Information": "Their motto is “unio in montibus et in campis et mare”. Created when Kye’s Colony and the NCT split up their territories. Made an agreement for $1.5T in investment so that NCT would get 10% of proceeds. Rebel Man recently retired and is now replaced by the acting president River Lozada. He promises more funding for education, infrastructure, and Scandinavian furniture.",
             "Affiliation": "",
             "Background Color": "#D9D9D9"
         },
@@ -306,7 +308,7 @@
         },
         "Vitamonte": {
             "Leader": "Adhmad Ali",
-            "Wealth": 0.94,
+            "Wealth": 2.37,
             "Citizens": 6,
             "Military": "Modern military, no war monkeys or navy unfortunately.",
             "Location/Land": "Sumatra and non-Indonesian Borneo.",
@@ -315,9 +317,9 @@
             "Background Color": "#FF89B3"
         },
         "Sequoia": {
-            "Leader": "Paulene Randall",
-            "Wealth": 1.04,
-            "Citizens": 7,
+            "Leader": "Draco Reyes",
+            "Wealth": 1.44,
+            "Citizens": 8,
             "Military": "Small military currently. Developing navy and more.",
             "Location/Land": "Northern California.",
             "Other Information": "Created after Arjun conquered Jonah, making this nation part of PWACIS. Popular tourist destination because of its redwoods and sequoias. Pays 5% taxes to Arjun.",
@@ -356,8 +358,8 @@
         },
         "South Calidum": {
             "Leader": "John Sith",
-            "Wealth": 3.39,
-            "Citizens": 47,
+            "Wealth": 3.15,
+            "Citizens": 46,
             "Military": "Uses the Calidum Union military as its own.",
             "Location/Land": "Northeast Africa down to the middle.",
             "Other Information": "Part of the Calidum Union and PWAICS.",
@@ -366,8 +368,8 @@
         },
         "Middle Calidum": {
             "Leader": "John Sith",
-            "Wealth": 5.06,
-            "Citizens": 92,
+            "Wealth": 4.12,
+            "Citizens": 91,
             "Military": "Uses the Calidum Union military as its own.",
             "Location/Land": "Eastern Arabian peninsula.",
             "Other Information": "Part of the Calidum Union and PWAICS.",
@@ -376,8 +378,8 @@
         },
         "North Calidum": {
             "Leader": "John Sith",
-            "Wealth": 1.72,
-            "Citizens": 28,
+            "Wealth": 1.41,
+            "Citizens": 23,
             "Military": "Uses the Calidum Union military as its own.",
             "Location/Land": "Middle East excluding the Arabian Peninsula & Persia.",
             "Other Information": "Part of the Calidum Union and PWAICS.",
@@ -386,8 +388,8 @@
         },
         "East Calidum": {
             "Leader": "John Sith",
-            "Wealth": 3.14,
-            "Citizens": 110,
+            "Wealth": 2.87,
+            "Citizens": 100,
             "Military": "Uses the Calidum Union military as its own.",
             "Location/Land": "Persia, stopping at the Persian Gulf.",
             "Other Information": "Part of the Calidum Union and PWAICS.",
@@ -396,7 +398,7 @@
         },
         "Routia": {
             "Leader": "Chimwala Lesego",
-            "Wealth": 0.96,
+            "Wealth": 1.02,
             "Citizens": 42,
             "Military": "Rusty yet trusty large military.",
             "Location/Land": "Northwestern South America & Madagascar.",
@@ -406,7 +408,7 @@
         },
         "Chikan": {
             "Leader": "Sajra Pinchas",
-            "Wealth": 1.77,
+            "Wealth": 1.32,
             "Citizens": 37,
             "Military": "Old medium size military.",
             "Location/Land": "In South America, below Routia.",
@@ -416,7 +418,7 @@
         },
         "Munkey": {
             "Leader": "Thando Rani",
-            "Wealth": 1.3,
+            "Wealth": 1.66,
             "Citizens": 35,
             "Military": "Old and small sized military.",
             "Location/Land": "In South America, below Chikan.",
@@ -426,18 +428,18 @@
         },
         "New Emeio": {
             "Leader": "Ezra Anagonye",
-            "Wealth": 2.14,
-            "Citizens": 19,
+            "Wealth": 2.74,
+            "Citizens": 25,
             "Military": "New modern military with a small navy.",
             "Location/Land": "Narrow strip at westernmost Africa.",
-            "Other Information": "Formerly arguably the least developed country, now a major tech center with a new government after Arjun's \u201cinvasion\u201d, supplying supercomputers and technology parts.",
+            "Other Information": "Formerly arguably the least developed country, now a major tech center with a new government after Arjun's “invasion”, supplying supercomputers and technology parts. In a new agreement with Cogitium following the recent surge of Tridiv, investing in each other.",
             "Affiliation": "",
             "Background Color": "#227864"
         },
         "Colony Hot": {
             "Leader": "Margalita Talatu",
-            "Wealth": 3.11,
-            "Citizens": 60,
+            "Wealth": 2.31,
+            "Citizens": 56,
             "Military": "Large military, still a bit old but very stable and modern compared to neighbours.",
             "Location/Land": "In Africa, east of New Emeio.",
             "Other Information": "Largest and second most developed African country.",
@@ -446,8 +448,8 @@
         },
         "Billy": {
             "Leader": "Billy Bill",
-            "Wealth": 1.02,
-            "Citizens": 12,
+            "Wealth": 1.72,
+            "Citizens": 17,
             "Military": "Mostly modern but small military.",
             "Location/Land": "In Africa, south of Colony Hot.",
             "Other Information": "Used to have more land, but they merged with Colony Hot and when the Non-Empire conquered the modern-day territory and fell, they became  with new borders.",
@@ -456,7 +458,7 @@
         },
         "Bun Pik": {
             "Leader": "Enver Tzvi",
-            "Wealth": 0.94,
+            "Wealth": 0.82,
             "Citizens": 31,
             "Military": "Small and old military.",
             "Location/Land": "In Africa, south of Billy.",
@@ -466,7 +468,7 @@
         },
         "Chainah": {
             "Leader": "Ruzan Gavriel",
-            "Wealth": 0.9,
+            "Wealth": 1.07,
             "Citizens": 57,
             "Military": "Medium sized but very old military.",
             "Location/Land": "In Africa, east of Bun Pik.",
@@ -476,21 +478,21 @@
         },
         "Terratoo": {
             "Leader": "Arif Margalita",
-            "Wealth": 0.75,
-            "Citizens": 31,
+            "Wealth": 0.82,
+            "Citizens": 32,
             "Military": "Small and very old military except for the navy.",
             "Location/Land": "In Africa, east of Chainah.",
-            "Other Information": "Previously part of Chainah, but split from Chainah and was able to avoid Calidum and the Non-Empire\u2019s conquest.",
+            "Other Information": "Previously part of Chainah, but split from Chainah and was able to avoid Calidum and the Non-Empire’s conquest.",
             "Affiliation": "",
             "Background Color": "#15A962"
         },
-        "New \u00c6volo": {
+        "New Ævolo": {
             "Leader": "Bereket Anna",
-            "Wealth": 2.68,
-            "Citizens": 58,
+            "Wealth": 2.31,
+            "Citizens": 62,
             "Military": "Modern and medium sized military, inherited from the Non-Empire.",
             "Location/Land": "In Africa, south of Bun Pik.",
-            "Other Information": "Quite different from the old, more corrupt, \u00c6volo, having a Non-Empire based culture and government.",
+            "Other Information": "Quite different from the old, more corrupt, Ævolo, having a Non-Empire based culture and government.",
             "Affiliation": "",
             "Background Color": "#23C4AA"
         }
