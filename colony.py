@@ -16,7 +16,7 @@ if datetime.datetime.now() - last_updated > datetime.timedelta(days=30):
         colony = colony_stats["Nations"][colony]
 
         colony["Wealth"] += random.uniform(0 - colony["Wealth"] / 10, colony["Wealth"] / 10)
-        colony["Wealth"] = float(f"{colony[f'Wealth']:.2f}")
+        colony["Wealth"] = float(f"{colony["Wealth"]:.2f}")
         
         colony["Citizens"] += int(random.uniform(0 - colony["Citizens"] / 20, colony["Citizens"] / 20))
 
@@ -31,7 +31,7 @@ if datetime.datetime.now() - last_updated > datetime.timedelta(days=30):
 
 
 # Calculate union reps
-def calculate_reps():
+def calculate_reps(colony_stats):
     for union in colony_stats["Unions"]:
         union = colony_stats["Unions"][union]
 
@@ -46,7 +46,7 @@ def calculate_reps():
     with open("data/stats.json", "w") as new_stats:
         new_stats.write(json.dumps(colony_stats, indent=4))
 
-calculate_reps()
+calculate_reps(colony_stats)
 
 
                 

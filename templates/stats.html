@@ -5,49 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Nation Stats</title>
     <link href="static/styles.css" rel="stylesheet">
+    <link href="static/stats.css" rel="stylesheet">
 
-    <style>
-        img {
-            border: 5px solid black;
-        }
-        .img-sub {
-            font-size: 1.2rem;
-            margin-top: 0.5rem;
-        }
-        /*
-        div[contenteditable="true"] {
-            display: flex;
-            align-items: center;
-
-        }
-            */
-
-        table, th, td {
-            border: 1px solid black;
-            border-collapse: collapse;
-        }
-        th, td {
-            padding: 0.5em;
-        }
-        th, td:hover {
-            filter: brightness(75%); 
-        }
-        
-
-        td:nth-child(1), th {
-            font-size: 1.5em;
-            font-weight: bold;
-        }
-        td:nth-child(2) {
-            font-size: 1.3em;
-        }
-        td:nth-child(3) {
-            font-size: 1.5em;
-        }
-        td:nth-child(4) {
-            font-size: 1.5em;
-        }
-    </style>
 </head>
 <body>
     <h1>Nation Stats</h1>
@@ -58,7 +17,13 @@
     </p>
 
     <br>
+    <span>Total Assets: {{total_wealth}} | Total Population: {{total_population}}</span>
+    <br><br>
 
+    <span class="button-pill" style="display: none">
+        <button>+</button>|<button>-</button>
+    </span>
+    
     <section id="unions">
         <h2>Unions</h2>
         <p class="subtitle">Union military, reserve, and land is separate from the military and wealth of the member nations unless otherwise stated.</p>
@@ -78,20 +43,20 @@
             <tr>
                 {% set union = colony_stats["Unions"][union_name] %}
 
-                <td class="{{union_name}} name">{{ union_name }}</td>
-                <td class="{{union_name}} leader">{{ union.Leader }}</td>
-                <td class="{{union_name}} reserve">${{ union.Reserve }}T</td>
-                <td class="{{union_name}} reps">{{ union["Reps."] }}</td>
-                <td class="{{union_name}} military">{{ union.Military }}</td>
-                <td class="{{union_name}} land">{{ union.Land }}</td>
-                <td class="{{union_name}} members">
+                <td class="{{union_name}} Name">{{ union_name }}</td>
+                <td class="{{union_name}} Leader">{{ union.Leader }}</td>
+                <td class="{{union_name}} Reserve">${{ union.Reserve }}T</td>
+                <td class="{{union_name}} Reps.">{{ union["Reps."] }}</td>
+                <td class="{{union_name}} Military">{{ union.Military }}</td>
+                <td class="{{union_name}} Land">{{ union.Land }}</td>
+                <td class="{{union_name}} Members">
                     {{ ', '.join(union.Members) }}
                     {% if union["Partial Members"] != [] %}
                         (Partial: {{', '.join(union["Partial Members"])}})
                     {% endif %}
 
                 </td>
-                <td class="{{union_name}} other">{{ union["Other Information"] }}</td>
+                <td class="{{union_name}} Other">{{ union["Other Information"] }}</td>
             </tr>
             {% endfor %}
 
@@ -118,13 +83,13 @@
                 
             {% set nation = colony_stats["Nations"][nation_name] %}
             <tr style="background-color: {{nation['Background Color']}}">
-                <td class="{{nation_name}} name">{{ nation_name }}</td>
-                <td class="{{nation_name}} leader">{{ nation.Leader }}</td>
-                <td class="{{nation_name}} wealth">${{ nation.Wealth }}T</td>
-                <td class="{{nation_name}} citizens">{{ nation.Citizens }}M</td>
-                <td class="{{nation_name}} military">{{ nation.Military }}</td>
-                <td class="{{nation_name}} land">{{ nation["Location/Land"] }}</td>
-                <td class="{{nation_name}} other">{{ nation["Other Information"] }}</td>
+                <td class="{{nation_name}} Name">{{ nation_name }}</td>
+                <td class="{{nation_name}} Leader">{{ nation.Leader }}</td>
+                <td class="{{nation_name}} Wealth">${{ nation.Wealth }}T</td>
+                <td class="{{nation_name}} Citizens">{{ nation.Citizens }}M</td>
+                <td class="{{nation_name}} Military">{{ nation.Military }}</td>
+                <td class="{{nation_name}} Location/Land">{{ nation["Location/Land"] }}</td>
+                <td class="{{nation_name}} Other">{{ nation["Other Information"] }}</td>
             </tr>
             {% endfor %}
 
@@ -146,23 +111,6 @@
         ALL THE DGDs: <a href="https://docs.google.com/document/d/1HonVWkh0uigSgPBY7LkX341vakJLNIwUU9cFHDL80BE/edit?tab=t.3cfisz6xplgo">AUT 0.2 - THE DGD LIST</a>
     </span>
     
-    <script>
-        let cellsEdited = new Map();
-        for (const element of document.querySelectorAll("td")) {
-            element.addEventListener("click", function(event) {
-                let cellToEdit = event.target;
-                cellToEdit.setAttribute("contenteditable", "true");
-                cellToEdit.setAttribute("spellcheck", "false");
-                cellToEdit.focus();
-            })
-            element.addEventListener("blur", function(event) {
-                let cellToEdit = event.target;
-                cellsEdited.set(cellToEdit.className, cellToEdit.innerHTML);
-                navigator.sendBeacon("/stats/save", JSON.stringify(Object.fromEntries(cellsEdited)));
-                
-            })
-        }
-        
-    </script>
+    <script src="static/stats.js"></script>
 </body>
 </html>

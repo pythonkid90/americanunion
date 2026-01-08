@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AUT/DGD Editor</title>
+    <!-- <link href="static/styles.css" rel="stylesheet"> -->
+    <link href="https://cdn.jsdelivr.net/npm/quill@2.0.3/dist/quill.snow.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/atom-one-dark.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css" />
+
+    <style>
+        #editor .ql-editor > * {
+            font-family: "Times New Roman";
+            font-size: 13pt;
+        }
+
+        .ql-snow .ql-picker.ql-size .ql-picker-label::before {
+            content: '13pt' !important;
+        }
+
+        {% for i in range(1, 21) %}
+            .ql-snow .ql-picker.ql-size .ql-picker-label[data-value="{{ i }}pt"]::before,
+            .ql-snow .ql-picker.ql-size .ql-picker-item[data-value="{{ i }}pt"]::before {
+                content: '{{ i }}pt' !important;
+            }
+        {% endfor %}
+
+        
+    </style>
+
+</head>
+<body>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/quill@2.0.3/dist/quill.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
+
+    STILL IN PROGRESS. NO SAVING RIGHT NOW SO YOU WILL HAVE TO MANUALLY COPY YOUR DOCUMENT.
+
+    <div id="editor">
+    </div>
+
+    <script>
+        const fontSizes = Array.from({ length: 20 }, (_, i) => `${i + 1}pt`);
+
+        const Size = Quill.import('attributors/style/size');
+        Size.whitelist = fontSizes;
+        Quill.register(Size, true);
+        
+        /*
+        const Font = Quill.import('attributors/style/font');
+        Font.whitelist = ['times-new-roman'];
+        Quill.register(Font, true);*/
+
+        const quill = new Quill('#editor', {
+            modules: {
+                toolbar: [
+            ['bold', 'italic', 'underline', 'strike'],
+            ['blockquote', 'code-block'],
+            ['link', 'image', 'video', 'formula'],
+
+            [{ 'header': 1 }, { 'header': 2 }],
+            [{ 'list': 'ordered'}, { 'list': 'bullet' }, { 'list': 'check' }],
+            [{ 'script': 'sub'}, { 'script': 'super' }],
+            [{ 'indent': '-1'}, { 'indent': '+1' }],
+            [{ 'direction': 'ltr' }],
+            [{ 'size': fontSizes}],
+            [{ 'color': [] }, { 'background': [] }],
+            [{ 'align': [] }],
+
+            ['clean']
+        ]
+            },
+            theme: 'snow'
+        });
+
+        quill.format('size', '13pt');
+
+        quill.focus();
+    </script>
+</html>
+
+

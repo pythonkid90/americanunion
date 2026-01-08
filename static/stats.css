@@ -1,0 +1,48 @@
+img {
+    border: 5px solid black;
+}
+.img-sub {
+    font-size: 1.2rem;
+    margin-top: 0.5rem;
+}
+.button-pill {
+    border-radius: 20px;
+    box-shadow: 5px 5px 15px 5px #888888;
+    padding: 0.5rem;
+    border: 1px solid black;
+}
+.button-pill button {
+    background-color: white;
+    border: 0;
+    border-radius: 10px;
+    font-size: 1.5rem;
+}
+.button-pill button:hover {
+    background-color: lightgray;
+}
+
+table, th, td {
+    border: 1px solid black;
+    border-collapse: collapse;
+}
+th, td {
+    padding: 0.5em;
+}
+th, td:hover {
+    filter: brightness(75%); 
+}
+
+
+td:nth-child(1), th {
+    font-size: 1.5em;
+    font-weight: bold;
+}
+td:nth-child(2) {
+    font-size: 1.3em;
+}
+td:nth-child(3) {
+    font-size: 1.5em;
+}
+td:nth-child(4) {
+    font-size: 1.5em;
+}
