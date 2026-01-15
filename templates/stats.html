@@ -39,24 +39,22 @@
                 <th>Other Information</th>
             </tr>
 
-            {% for union_name in colony_stats["Unions"] %}
+            {% for index, union in union_enumeration %}
             <tr>
-                {% set union = colony_stats["Unions"][union_name] %}
-
-                <td class="{{union_name}} Name">{{ union_name }}</td>
-                <td class="{{union_name}} Leader">{{ union.Leader }}</td>
-                <td class="{{union_name}} Reserve">${{ union.Reserve }}T</td>
-                <td class="{{union_name}} Reps.">{{ union["Reps."] }}</td>
-                <td class="{{union_name}} Military">{{ union.Military }}</td>
-                <td class="{{union_name}} Land">{{ union.Land }}</td>
-                <td class="{{union_name}} Members">
+                <td class="{{index}} Unions Name">{{ union.Name }}</td>
+                <td class="{{index}} Unions Leader">{{ union.Leader }}</td>
+                <td class="{{index}} Unions Reserve">${{ union.Reserve }}T</td>
+                <td class="{{index}} Unions Reps.">{{ union["Reps."] }}</td>
+                <td class="{{index}} Unions Military">{{ union.Military }}</td>
+                <td class="{{index}} Unions Land">{{ union.Land }}</td>
+                <td class="{{index}} Unions Members">
                     {{ ', '.join(union.Members) }}
                     {% if union["Partial Members"] != [] %}
                         (Partial: {{', '.join(union["Partial Members"])}})
                     {% endif %}
 
                 </td>
-                <td class="{{union_name}} Other">{{ union["Other Information"] }}</td>
+                <td class="{{index}} Unions Other">{{ union["Other Information"] }}</td>
             </tr>
             {% endfor %}
 
@@ -79,17 +77,16 @@
                 <th>Other Information</th>
             </tr>
 
-            {% for nation_name in colony_stats["Nations"] %}
+            {% for index, nation in nation_enumeration %}
                 
-            {% set nation = colony_stats["Nations"][nation_name] %}
             <tr style="background-color: {{nation['Background Color']}}">
-                <td class="{{nation_name}} Name">{{ nation_name }}</td>
-                <td class="{{nation_name}} Leader">{{ nation.Leader }}</td>
-                <td class="{{nation_name}} Wealth">${{ nation.Wealth }}T</td>
-                <td class="{{nation_name}} Citizens">{{ nation.Citizens }}M</td>
-                <td class="{{nation_name}} Military">{{ nation.Military }}</td>
-                <td class="{{nation_name}} Location/Land">{{ nation["Location/Land"] }}</td>
-                <td class="{{nation_name}} Other">{{ nation["Other Information"] }}</td>
+                <td class="{{index}} Nations Name">{{ nation.Name }}</td>
+                <td class="{{index}} Nations Leader">{{ nation.Leader }}</td>
+                <td class="{{index}} Nations Wealth">${{ nation.Wealth }}T</td>
+                <td class="{{index}} Nations Citizens">{{ nation.Citizens }}M</td>
+                <td class="{{index}} Nations Military">{{ nation.Military }}</td>
+                <td class="{{index}} Nations Location/Land">{{ nation["Location/Land"] }}</td>
+                <td class="{{index}} Nations Other">{{ nation["Other Information"] }}</td>
             </tr>
             {% endfor %}
 

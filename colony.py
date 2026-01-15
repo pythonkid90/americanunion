@@ -13,18 +13,14 @@ if datetime.datetime.now() - last_updated > datetime.timedelta(days=30):
 
     # Update colony wealth and citizens
     for colony in colony_stats["Nations"]:
-        colony = colony_stats["Nations"][colony]
 
         colony["Wealth"] += random.uniform(0 - colony["Wealth"] / 10, colony["Wealth"] / 10)
         colony["Wealth"] = float(f"{colony["Wealth"]:.2f}")
         
         colony["Citizens"] += int(random.uniform(0 - colony["Citizens"] / 20, colony["Citizens"] / 20))
-
-
     # Update union reserve
     for union in colony_stats["Unions"]:
-        union = colony_stats["Unions"][union]
-
+        
         if union["Reserve"] != "N/A":
             union["Reserve"] += random.uniform(0 - union["Reserve"] / 20, union["Reserve"] / 20)
             union["Reserve"] = float(f"{union[f'Reserve']:.2f}")
@@ -33,10 +29,13 @@ if datetime.datetime.now() - last_updated > datetime.timedelta(days=30):
 # Calculate union reps
 def calculate_reps(colony_stats):
     for union in colony_stats["Unions"]:
-        union = colony_stats["Unions"][union]
-
         if union["Reps."] != "N/A":
-            total_reps = sum([colony_stats["Nations"][member]["Citizens"] for member in union["Members"]])
+            total_reps = 0
+            for member in union["Members"]:
+                for colony in colony_stats["Nations"]:
+                    if colony["Name"] == member:
+                        total_reps += int(colony["Citizens"])
+
             total_reps *= 1000000 / union["Rep. Ratio"]
             union["Reps."] = f"{int(total_reps):,d}"
 
@@ -47,6 +46,3 @@ def calculate_reps(colony_stats):
         new_stats.write(json.dumps(colony_stats, indent=4))
 
 calculate_reps(colony_stats)
-
-
-                

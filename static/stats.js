@@ -16,6 +16,12 @@
 //         newCell.setAttribute("class", `newCell ${column}`);
 //         newRow.appendChild(newCell);
 
+//         newElement.style.position = "absolute"; // or 'fixed'
+
+// // 4. Set coordinates (100px from the left, 200px from the top)
+// newElement.style.left = "100px";
+// newElement.style.top = "200px";
+
 //         if (column === "Name") {
 //             newCell.innerHTML = "Nation Name Here"
 //             newCell.focus()
@@ -58,7 +64,7 @@ for (const element of document.querySelectorAll("table")) {
             cellToEdit.textContent = newName + cellToEdit.textContent.split(" ", 2)[1]
         }
 
-        cellsEdited.set(cellToEdit.className, cellToEdit.innerHTML);
+        cellsEdited.set(cellToEdit.className, cellToEdit.textContent);
         navigator.sendBeacon("/stats/save", JSON.stringify(Object.fromEntries(cellsEdited)));
         
     }, true)

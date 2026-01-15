@@ -3,7 +3,7 @@ A website I am making for the fictional American Union that has been constructed
 
 ## Current Features
 - A brutalist and colorful website homepage linking to nation stats, document creator, AUTs, and DGDs (the latter two are on Google Docs)
-- A nation stats page having global population, global wealth, unions, nations, and a map, with auto-updating counts. Stats for unions and nations are easily editable.
+- A nation stats page having global population, global wealth, unions, nations, and a map, with auto-updating counts. Stats for unions and nations are easily editable, including the name.
 
 ## Planned Features
 
@@ -21,8 +21,7 @@ A website I am making for the fictional American Union that has been constructed
 - A person lookup listing notable people from AUTs and DGDs, using descriptions from those documents as well as creating age, gender, nationality, etc.
 - An election generator to streamline the creation of DGD election files, allowing for multiple formattting styles (UCN Style, Arjun Style, Freezing Style, House, Propositions)
 - A backend API to power the election generator and other small things like AUT/DGD formatting, powered by Python and Rust code.
-- Redirect/proxying from colonyhub.netlify.app and americanunion.netlify.app. Maybe also hosting on Back4App.s
+- Redirect/proxying from colonyhub.netlify.app and americanunion.netlify.app. Maybe also hosting on Back4App?
 
 ## Known Bugs
-- You cannot edit nation names (it returns an internal 500 error)
-- Adding newlines to items in the nation stats tables will cause the internal HTML formatting to not be formatted correctly and become shown to the user.
+- None currently!
