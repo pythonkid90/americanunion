@@ -4,7 +4,7 @@ def sync_stats():
     try:
         with open("data/stats.json", "r") as colony_stats:
             colony_stats = json.load(colony_stats)
-    except FileNotFoundError:
+    except (FileNotFoundError, json.decoder.JSONDecodeError):
         with open("stats.json", "r") as colony_stats:
             colony_stats = json.load(colony_stats)
 
@@ -14,7 +14,7 @@ def update_stats(colony_stats):
     last_updated = datetime.datetime.strptime(colony_stats["last_updated"], "%Y-%m-%d")
     if datetime.datetime.now() - last_updated > datetime.timedelta(days=30):
         # colony_stats["last_updated"] = datetime.datetime.now().strftime("%Y-%m-%d")
-        colony_stats["last_updated"] = last_updated + datetime.timedelta(days=30)
+        colony_stats["last_updated"] = datetime.datetime.strftime(last_updated + datetime.timedelta(days=30), "%Y-%m-%d")
 
         # Update colony wealth and citizens
         for colony in colony_stats["Nations"]:
