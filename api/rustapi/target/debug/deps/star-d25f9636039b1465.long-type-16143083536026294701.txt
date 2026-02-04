@@ -1,0 +1,1 @@
+(&'static str, f64, f64, (&'static str, {float}, {float}), (&'static str, {float}, {float}), (&'static str, {float}, {float}), (&'static str, {float}, {float}), (&'static str, {float}, {float}))

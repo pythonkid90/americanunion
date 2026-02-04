@@ -4,8 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Nation Stats</title>
-    <link href="static/styles.css" rel="stylesheet">
-    <link href="static/stats.css" rel="stylesheet">
+    <link href="static/css/styles.css" rel="stylesheet">
+    <link href="static/css/stats.css" rel="stylesheet">
 
 </head>
 <body>
@@ -13,16 +13,26 @@
     <p class="subtitle">
         A list of all nations and inter-nation unions of the world recognized by the American Union. Each nation/union listed contains 
         various stats pertaining to the nation/union. Note that descriptions for military can be subjective. Click on a cell to edit that cell,
-        and click anywhere else to save your changes.
+        and click anywhere else to save your changes. Click near a border of a cell to insert a new row. Use the buttons on the top left to delete or recolor rows.
     </p>
 
     <br>
-    <span>Total Assets: {{total_wealth}} | Total Population: {{total_population}}</span>
+    <span id="total-stats">Total Assets: {{total_wealth}} | Total Population: {{total_population}}</span>
     <br><br>
 
-    <span class="button-pill" style="display: none">
-        <button>+</button>|<button>-</button>
-    </span>
+    <div class="action-buttons">
+        <button class="button-pill" id="delete-row"><img src="/static/images/trash.svg"></button>
+        <button class="button-pill" id="paint-row"><img src="/static/images/brush.svg"></button>
+        <!-- <button class="button-pill"><img src="/static/images/sliders.svg"></button> -->
+    </div>
+
+    <div class="button-pill popup" id="action-instructions">Click on a row to delete it.</div>
+
+    <div class="button-pill popup" id="repaint">
+        <label for="repaint-hex">Insert new hex code to repaint background.</label><br>
+        #<input type="text" id="repaint-hex" name="repaint-hex"><br>
+        <button id="repaint-cancel">Cancel</button><button id="repaint-submit">Submit</button>
+    </div>
     
     <section id="unions">
         <h2>Unions</h2>
@@ -41,20 +51,26 @@
 
             {% for index, union in union_enumeration %}
             <tr>
-                <td class="{{index}} Unions Name">{{ union.Name }}</td>
-                <td class="{{index}} Unions Leader">{{ union.Leader }}</td>
-                <td class="{{index}} Unions Reserve">${{ union.Reserve }}T</td>
-                <td class="{{index}} Unions Reps.">{{ union["Reps."] }}</td>
-                <td class="{{index}} Unions Military">{{ union.Military }}</td>
-                <td class="{{index}} Unions Land">{{ union.Land }}</td>
-                <td class="{{index}} Unions Members">
+                <td data-cellInfo="{{index}} Unions Name">{{ union.Name }}</td>
+                <td data-cellInfo="{{index}} Unions Leader">{{ union.Leader }}</td>
+                <td data-cellInfo="{{index}} Unions Reserve">${{ union.Reserve }}T</td>
+                <td data-cellInfo="{{index}} Unions Reps.">
+                    <span class="reps">{{union["Reps."]}}</span>
+                    <br>
+                    {% if union["Rep. Ratio"] != "N/A" %}
+                        <span class="rep-ratio">(Citizen to Rep Ratio: {{union["Rep. Ratio"]}}:1)</span>
+                    {% endif %}
+                </td>
+                <td data-cellInfo="{{index}} Unions Military">{{ union.Military }}</td>
+                <td data-cellInfo="{{index}} Unions Land">{{ union.Land }}</td>
+                <td data-cellInfo="{{index}} Unions Members">
                     {{ ', '.join(union.Members) }}
                     {% if union["Partial Members"] != [] %}
                         (Partial: {{', '.join(union["Partial Members"])}})
                     {% endif %}
 
                 </td>
-                <td class="{{index}} Unions Other">{{ union["Other Information"] }}</td>
+                <td data-cellInfo="{{index}} Unions Other">{{ union["Other Information"] }}</td>
             </tr>
             {% endfor %}
 
@@ -65,7 +81,7 @@
 
     <section id="nations">
         <h2>Nations</h2>
-        <p class="subtitle">Wealth is defined as liquid assets and nation investments are counted in both the investor’s and the investee’s wealth.</p>
+        <p class="subtitle">Wealth is defined as liquid assets in the government reserve and nation investments are counted in both the investor’s and the investee’s wealth.</p>
         <table>
             <tr>
                 <th>Name</th>
@@ -80,13 +96,13 @@
             {% for index, nation in nation_enumeration %}
                 
             <tr style="background-color: {{nation['Background Color']}}">
-                <td class="{{index}} Nations Name">{{ nation.Name }}</td>
-                <td class="{{index}} Nations Leader">{{ nation.Leader }}</td>
-                <td class="{{index}} Nations Wealth">${{ nation.Wealth }}T</td>
-                <td class="{{index}} Nations Citizens">{{ nation.Citizens }}M</td>
-                <td class="{{index}} Nations Military">{{ nation.Military }}</td>
-                <td class="{{index}} Nations Location/Land">{{ nation["Location/Land"] }}</td>
-                <td class="{{index}} Nations Other">{{ nation["Other Information"] }}</td>
+                <td data-cellInfo="{{index}} Nations Name">{{ nation.Name }}</td>
+                <td data-cellInfo="{{index}} Nations Leader">{{ nation.Leader }}</td>
+                <td data-cellInfo="{{index}} Nations Wealth">${{ nation.Wealth }}T</td>
+                <td data-cellInfo="{{index}} Nations Citizens">{{ nation.Citizens }}M</td>
+                <td data-cellInfo="{{index}} Nations Military">{{ nation.Military }}</td>
+                <td data-cellInfo="{{index}} Nations Location/Land">{{ nation["Location/Land"] }}</td>
+                <td data-cellInfo="{{index}} Nations Other">{{ nation["Other Information"] }}</td>
             </tr>
             {% endfor %}
 
@@ -95,7 +111,7 @@
 
     <br><br>
 
-    <img src="static/colony-map.png" width="1000">
+    <img id="colony-map" src="static/images/colony-map.png" width="1000">
     <p class="img-sub">Striped means disputed territory.</p>
 
     <br>
@@ -108,6 +124,6 @@
         ALL THE DGDs: <a href="https://docs.google.com/document/d/1HonVWkh0uigSgPBY7LkX341vakJLNIwUU9cFHDL80BE/edit?tab=t.3cfisz6xplgo">AUT 0.2 - THE DGD LIST</a>
     </span>
     
-    <script src="static/stats.js"></script>
+    <script src="static/js/stats.js"></script>
 </body>
 </html>

@@ -1,0 +1,29 @@
+# Beep. Boop. Welcome, robots!
+# The American Union welcomes you.
+# If you're a human, please redirect yourself to humans.txt.
+
+User-agent: Googlebot
+User-agent: bingbot
+User-agent: Applebot
+User-agent: DuckDuckBot
+User-agent: MojeekBot
+Allow: /$
+Disallow: /
+
+User-agent: GPTBot
+User-agent: CCBot
+User-agent: Baiduspider
+User-agent: Bytespider
+User-agent: YandexBot
+User-agent: Google-Extended
+User-agent: ClaudeBot
+User-agent: meta-externalagent
+User-agent: Amazonbot
+User-agent: Omgili
+Disallow: /
+
+# This site is open to anybody wanting to try their hand at web crawlers or just have some fun.
+# You may access anything on this site, just please don't destroy all my precious data, or I will find your address and personally eat your pasta.
+# But seriously, I will block anybody who nukes my site.
+User-agent: *
+Allow: /

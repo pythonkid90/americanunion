@@ -1,0 +1,113 @@
+#colony-map {
+    border: 5px solid black;
+}
+.img-sub {
+    font-size: 1.2rem;
+    margin-top: 0.5rem;
+}
+#total-stats {
+    font-size: 1.5em;
+    font-weight: bold;
+}
+
+
+.action-buttons {
+    position: fixed;
+    top: 0;
+    left: 0;
+    padding: 1rem;
+    z-index: 1000;
+}
+.action-buttons .button-pill {
+    padding: 0.5rem;
+    border-radius: 50%;
+    width: 3rem;
+    height: 3rem;
+}
+.button-pill {
+    border: 1px solid black;
+    background-color: white;
+
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+.button-pill img {
+    width: 1.5rem;
+}
+
+.popup {
+    display: none;
+
+    padding: 1rem;
+    z-index: 1001;
+    border-radius: 15px;
+
+    position: fixed;
+    left: 50%;
+
+    font-weight: bold;
+    font-size: 1.5rem;
+    
+}
+
+#action-instructions {
+    top: 1rem;
+    transform: translateX(-50%);
+
+}
+
+#repaint {
+    top: 50%;
+    transform: translate(-50%, -50%);
+}
+
+#repaint-hex, #repaint-submit, #repaint-cancel {
+    margin: 0.5rem;
+    width: 5.5rem;
+    font-size: 1.3rem;
+    border-radius: 10px;
+    border: 1px solid gray;
+    padding: 0.3rem;
+}
+#repaint-hex {
+    margin-top: 1rem;
+}
+#repaint-submit {
+    background-color: #08f;
+    color: white;
+}
+#repaint-cancel {
+    background-color: lightgray;
+}
+
+table, th, td {
+    border: 1px solid black;
+    border-collapse: collapse;
+}
+th, td {
+    padding: 0.5rem;
+    border-bottom: 1px solid black;
+    border-top: 1px solid black;
+}
+th, td:hover {
+    filter: brightness(75%); 
+}
+
+td:nth-child(1), th {
+    font-weight: bold;
+}
+td:nth-child(1), th, td:nth-child(3), #nations td:nth-child(4), .reps {
+    font-size: 1.5rem;
+}
+td:nth-child(2) {
+    font-size: 1.3rem;
+}
+.rep-ratio {
+    font-size: 1rem;
+
+}
+
+tr.row-selection-mode:hover {
+    box-shadow: inset 0 0 0 999px rgba(0, 0, 0, 0.1);
+}
