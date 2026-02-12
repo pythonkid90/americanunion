@@ -1,6 +1,6 @@
 [project]
 name = "american-union-website"
-version = "0.6.0"
+version = "0.6.1"
 description = "A website made for the fictional American Union, a world-spanning power with one mission: keep the peace. Its history is told through a series of government documents."
 readme = "README.md"
 requires-python = ">=3.12"
