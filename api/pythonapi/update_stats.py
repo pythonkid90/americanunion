@@ -1,4 +1,9 @@
-import json, datetime, random, pathlib
+import json
+from pathlib import Path
+from time import time
+from random import uniform
+from datetime import datetime, timedelta
+from shutil import copyfile
 
 def sync_stats():
     try:
@@ -11,29 +16,35 @@ def sync_stats():
     return colony_stats
 
 def update_stats(colony_stats):
-    last_updated = datetime.datetime.strptime(colony_stats["last_updated"], "%Y-%m-%d")
-    if datetime.datetime.now() - last_updated > datetime.timedelta(days=30):
-        # colony_stats["last_updated"] = datetime.datetime.now().strftime("%Y-%m-%d")
-        colony_stats["last_updated"] = datetime.datetime.strftime(last_updated + datetime.timedelta(days=30), "%Y-%m-%d")
+    print("MANNY", datetime.now() - datetime.strptime(colony_stats["last_updated"], "%Y-%m-%d"))
+    last_updated = datetime.strptime(colony_stats["last_updated"], "%Y-%m-%d")
+    if datetime.now() - last_updated > timedelta(days=30):
+        print("okde")
+        colony_stats["last_updated"] = datetime.strftime(last_updated + timedelta(days=30), "%Y-%m-%d")
+
+        # Make monthly backup
+        backups_path = Path("data/backups/monthly")
+        backups_path.mkdir(parents=True, exist_ok=True)
+        copyfile("data/stats.json", f"data/backups/monthly/stats_{colony_stats['last_updated']}.json")
 
         # Update colony wealth and citizens
         for colony in colony_stats["Nations"]:
-
-            colony["Wealth"] += random.uniform(0 - colony["Wealth"] / 10, colony["Wealth"] / 10)
+            colony["Wealth"] += uniform(0 - colony["Wealth"] / 10, colony["Wealth"] / 10)
             colony["Wealth"] = float(f"{colony["Wealth"]:.2f}")
             
-            colony["Citizens"] += int(random.uniform(0 - colony["Citizens"] / 20, colony["Citizens"] / 20))
+            colony["Citizens"] += int(uniform(0 - colony["Citizens"] / 20, colony["Citizens"] / 20))
         # Update union reserve
         for union in colony_stats["Unions"]:
-            
             if union["Reserve"] != "N/A":
-                union["Reserve"] += random.uniform(0 - union["Reserve"] / 20, union["Reserve"] / 20)
-                union["Reserve"] = float(f"{union[f'Reserve']:.2f}")
+                union["Reserve"] += uniform(0 - union["Reserve"] / 20, union["Reserve"] / 20)
+                union["Reserve"] = float(f"{union['Reserve']:.2f}")
+
+    write_stats(colony_stats)
 
 # Calculate union reps
 def calculate_reps(colony_stats):
     for union in colony_stats["Unions"]:
-        if union["Reps."] != "N/A":
+        if union["Rep. Ratio"] != 0:
             total_reps = 0
             for member in union["Members"]:
                 for colony in colony_stats["Nations"]:
@@ -42,23 +53,37 @@ def calculate_reps(colony_stats):
 
             total_reps *= 1000000 / union["Rep. Ratio"]
             union["Reps."] = f"{int(total_reps):,d}"
+        else:
+            union["Reps."] = "N/A"
+    
+    Path("data/").mkdir(parents=True, exist_ok=True)
 
-    stats_path = pathlib.Path("data/")
-    stats_path.mkdir(parents=True, exist_ok=True)
+def write_stats(colony_stats):    
+    with open("data/stats.json", "r+") as saved_stats:
+        if json.load(saved_stats) != colony_stats:
+            try:
+                old_timestamp = colony_stats["last_edit"]
+            except KeyError:
+                old_timestamp = time() - 1
 
-def write_stats(colony_stats):
-    with open("data/stats.json", "w") as new_stats:
-        new_stats.write(json.dumps(colony_stats, indent=4))
+            colony_stats["last_edit"] = time()
 
-colony_stats = sync_stats()
-update_stats(colony_stats)
-calculate_reps(colony_stats)
-write_stats(colony_stats)
+            backups_path = Path("data/backups")
+            backups_path.mkdir(parents=True, exist_ok=True)
+            stats_backups = sorted([backup for backup in backups_path.iterdir() if backup.is_file()])
 
-def clean_numeric_data(data, float_allowed=False):
-    if float_allowed:
-        return float(''.join(char for char in str(data) if char.isdigit() or char == "."))
-    else:
-        return int(''.join(char for char in str(data) if char.isdigit()))
+            if len(stats_backups) <= 5:
+                copyfile("data/stats.json", f"data/backups/stats_{old_timestamp}.json")
+            if len(stats_backups) >= 5:
+                Path(stats_backups[0]).unlink()
 
-keep_digits = clean_numeric_data
+            saved_stats.seek(0)
+            saved_stats.truncate()
+
+            saved_stats.write(json.dumps(colony_stats, indent=4))
+
+if __name__ == "__main___":
+    colony_stats = sync_stats()
+    update_stats(colony_stats)
+    calculate_reps(colony_stats)
+    write_stats(colony_stats)

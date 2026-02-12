@@ -1,0 +1,17 @@
+To-do:
+- Make colony-map editible with backups in same way as stats.json
+- Undo and redo buttons for AU website (ctrl-z and ctrl-y), probably on riight corner, do using backup system
+- Confirmation for deletion
+- Nation search bar (ctrl-f)
+
+Changelog:
+
+- Fixed various minor bugs regarding new delete system
+- Fixed bug where union names overwrite nations in the member list of other unions
+- Updated pyproject.toml with new version number and description
+- Reorganized/refactored even more stuff
+- Added protected internal endpoint for raw unprotected changes to stats.json (to use it in your own server, change the hash variable to the hash of the password of your choice generated with Werkzeug's generate_password_hash)
+- Added favicon for website pages
+- Added last 5 backups for stats.json as well as permanent monthly backups
+- Updated README features and roadmap
+- Made representative count read-only (you can only edit the ratio and members to auto-calculate the reps), made 0:1 rep. ratio always N/A and vice versa

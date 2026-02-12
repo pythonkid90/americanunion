@@ -6,7 +6,7 @@
     <title>Nation Stats</title>
     <link href="static/css/styles.css" rel="stylesheet">
     <link href="static/css/stats.css" rel="stylesheet">
-
+    <link rel="icon" type="image/png" href="static/images/favicon.png">
 </head>
 <body>
     <h1>Nation Stats</h1>
@@ -58,7 +58,7 @@
                     <span class="reps">{{union["Reps."]}}</span>
                     <br>
                     {% if union["Rep. Ratio"] != "N/A" %}
-                        <span class="rep-ratio">(Citizen to Rep Ratio: {{union["Rep. Ratio"]}}:1)</span>
+                        <div class="rep-ratio">(Citizen to Rep Ratio: {{union["Rep. Ratio"]}}:1)</div>
                     {% endif %}
                 </td>
                 <td data-cellInfo="{{index}} Unions Military">{{ union.Military }}</td>
@@ -124,6 +124,6 @@
         ALL THE DGDs: <a href="https://docs.google.com/document/d/1HonVWkh0uigSgPBY7LkX341vakJLNIwUU9cFHDL80BE/edit?tab=t.3cfisz6xplgo">AUT 0.2 - THE DGD LIST</a>
     </span>
     
-    <script src="static/js/stats.js"></script>
+    <script src="static/js/stats/stats.js" type="module"></script>
 </body>
 </html>

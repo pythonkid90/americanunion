@@ -1,3 +1,6 @@
+body, #unions {
+    background-color: white;
+}
 #colony-map {
     border: 5px solid black;
 }
