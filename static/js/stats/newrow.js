@@ -21,7 +21,7 @@ export function createNewRow(cellToEdit, locationClicked) {
         "Leader": "Leader Name(s) Here",
         "Reserve": "$0.0T",
         "Wealth": "$0.0T",
-        "Reps.": "0",
+        "Reps.": "<span class='reps'>0</span><div class='rep-ratio'>(Citizen to Rep Ratio: 100000:1)</div>",
         "Citizens": "0M",
         "Land": `Describe the land ownings of this ${tableID.slice(0, -1)}.`,
         "Location/Land": `Describe the land ownings of this ${tableID.slice(0, -1)}.`,

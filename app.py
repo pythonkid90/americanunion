@@ -1,9 +1,11 @@
-from api import sync_stats, update_stats, calculate_reps, write_stats, keep_digits, parse_cell_data
+from api.pythonapi.helpers import keep_digits, parse_cell_data
+from api.pythonapi.update_stats import sync_stats, update_stats, calculate_reps, write_stats, make_backup
 from static_routes import static
 
 from flask import Flask, render_template, request, send_from_directory, abort
 from werkzeug.security import check_password_hash
 import json
+import time
 
 app = Flask(__name__)
 app.register_blueprint(static)
@@ -119,6 +121,13 @@ def internal_update_stats():
 
     return "Success", 200
 
+@app.post('/stats/map_upload')
+def upload_map():
+    request.files["new-colony-map"].save("data/colony-map")
+
+    make_backup("data/backups/maps", "before_" + str(time.time()), "colony-map.png")
+
+    return "Success", 200
 
 if __name__ == '__main__':
     app.run(debug=True)

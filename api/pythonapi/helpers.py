@@ -2,7 +2,13 @@ def clean_numeric_data(data, float_allowed=False):
     if float_allowed:
         whole, point, decimal = str(data).partition(".")
         whole, decimal = ''.join(filter(str.isdigit, whole)), ''.join(filter(str.isdigit, decimal))
-        return float(whole + "." + decimal)
+
+        if not (decimal == "" and whole == ""):
+            return float(whole + "." + decimal)
+        elif decimal == "" and whole != "":
+            return float(whole)
+        else:
+            return 0.0
     else:
         return int(''.join(filter(str.isdigit, str(data))))
 

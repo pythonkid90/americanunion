@@ -35,9 +35,9 @@ function editCell(event) {
             // Creates new row if near border.
             const rect = cellToEdit.getBoundingClientRect();
 
-            if (rect.bottom - event.clientY <= 15) {
+            if (rect.bottom - event.clientY <= 10) {
                 createNewRow(cellToEdit, "bottom");
-            } else if (event.clientY - rect.top <= 15) {
+            } else if (event.clientY - rect.top <= 10) {
                 createNewRow(cellToEdit, "top");
             } else {
                 event.target.setAttribute("contenteditable", "true");
@@ -71,3 +71,22 @@ for (const table of document.querySelectorAll("table")) {
     selectionUIMode(table)
 }
 
+document.querySelector("#map-upload").addEventListener('change', function (event) {
+    const colonyMap = event.target.files[0];
+    if (colonyMap && colonyMap.type === "image/png") {
+        const colonyMapData = new FormData();
+        colonyMapData.append('new-colony-map', colonyMap);
+
+        fetch('/stats/map_upload', {
+            method: 'POST',
+            body: colonyMapData
+        })
+        .catch((error) => {
+            console.error('Error:', error);
+        });
+
+        // Update image to a blob URL so that it will show the new image without reload.
+        document.querySelector("#colony-map").src = URL.createObjectURL(colonyMap);
+        document.querySelector("#map-download").href = URL.createObjectURL(colonyMap);
+    }
+});
