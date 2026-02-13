@@ -123,7 +123,7 @@ def internal_update_stats():
 
 @app.post('/stats/map_upload')
 def upload_map():
-    request.files["new-colony-map"].save("data/colony-map")
+    request.files["new-colony-map"].save("data/colony-map.png")
 
     make_backup("data/backups/maps", "before_" + str(time.time()), "colony-map.png")
 
