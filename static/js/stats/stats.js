@@ -1,23 +1,6 @@
-import {addUpdatedCell, sendUpdatedCells, rowSelectInfo} from './globals.js';
+import {addUpdatedCell, sendUpdatedCells, rowSelectInfo, getCellInfo} from './globals.js';
 import {activateDeleteOrPaintButtons, selectionUIMode, deleteOrPaintRows} from './actionbuttons.js';
 import {createNewRow} from './newrow.js';
-
-function updateRowIDs(row) {
-    let rowCounter = -1;
-
-    for (const tableRow of row.closest("table").querySelectorAll("tr")) {
-        console.log(tableRow, row, rowCounter)
-        for (const tableCell of tableRow.querySelectorAll("td")) {
-            let cellInfoList = tableCell.dataset.cellinfo.split(" ")
-            cellInfoList[0] = rowCounter
-            tableCell.dataset.cellinfo = cellInfoList.join(" ");
-        }
-
-        rowCounter += 1
-    }
-
-
-}
 
 function editCell(event) {
     if (event.target.tagName === "TD" || event.target.tagName === "DIV") {
@@ -27,9 +10,7 @@ function editCell(event) {
         }
             
         // Updates ID of cell to edit
-        updateRowIDs(cellToEdit.parentNode)
-
-        const cellInfoList = cellToEdit.dataset.cellinfo.split(" ");
+        const cellInfoList = getCellInfo(cellToEdit);
 
         if (!rowSelectInfo["mode"]) {
             // Creates new row if near border.
@@ -78,7 +59,7 @@ document.querySelector("#map-upload").addEventListener('change', function (event
         colonyMapData.append('new-colony-map', colonyMap);
 
         fetch('/stats/map_upload', {
-            method: 'POST',
+            method: 'PUT',
             body: colonyMapData
         })
         .catch((error) => {

@@ -1,4 +1,4 @@
-import {addUpdatedCell, sendUpdatedCells} from './globals.js';
+import {addUpdatedCell, sendUpdatedCells, getCellInfo, unions_columns, nations_columns} from './globals.js';
 
 export function createNewRow(cellToEdit, locationClicked) {
     const newRow = document.createElement("tr");
@@ -9,11 +9,9 @@ export function createNewRow(cellToEdit, locationClicked) {
         cellToEdit.parentNode.before(newRow); 
     }
 
-    const tableID = cellToEdit.closest("section").id;
-    const cellInfoList = cellToEdit.dataset.cellinfo.split(" ");
+    const cellInfoList = getCellInfo(cellToEdit)
+    const tableID = cellInfoList["Table"];
 
-    const unions_columns = ["Name", "Leader", "Reserve", "Reps.", "Military", "Land", "Members", "Other"];
-    const nations_columns = ["Name", "Leader", "Wealth", "Citizens", "Military", "Location/Land", "Other"];
     const columns = (tableID === "unions") ? unions_columns : nations_columns;
     
     const columnDefaults = {
@@ -30,16 +28,19 @@ export function createNewRow(cellToEdit, locationClicked) {
         "Other": `Give any other important information or titles to documents about this ${tableID.slice(0, -1)}.`
     };
 
+    const rowIdentifier = `${cellInfoList["ID"]} ${cellInfoList["Table"]}`
+    let newRowInfo = {
+        [rowIdentifier]: {}
+    }
     for (const column of columns) {
         const newCell = document.createElement("td");
-        newCell.setAttribute("data-cellInfo", `newCellAfter${cellInfoList[0]} ${tableID} ${column}`);
 
         newCell.innerHTML = columnDefaults[column];
 
         newRow.appendChild(newCell);
-        addUpdatedCell(newCell);
+        newRowInfo[rowIdentifier][column] = columnDefaults[column];
     }
 
-    sendUpdatedCells();
+    navigator.sendBeacon("/stats/new", JSON.stringify(newRowInfo));
 }
 

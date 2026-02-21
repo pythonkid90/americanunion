@@ -45,7 +45,7 @@ export function deleteOrPaintRows(rowClicked, cellInfoList) {
     rowSelectInfo["mode"] = false;
 
     if (rowSelectInfo["type"] === "delete-row") {
-        fetch(`/stats/delete/${cellInfoList[1]}/${cellInfoList[0]}`, {method: 'DELETE'})
+        fetch(`/stats/delete/${cellInfoList["Table"]}/${cellInfoList["ID"]}`, {method: 'DELETE'})
         rowClicked.remove()
     } else if (rowClicked.closest("section").id === "nations") {
         document.querySelector("#repaint").style.display = "block";
@@ -55,7 +55,7 @@ export function deleteOrPaintRows(rowClicked, cellInfoList) {
 
             const submittedHexValue = document.querySelector("#repaint-hex").value
             rowClicked.style.backgroundColor = `#${submittedHexValue}`
-            navigator.sendBeacon("/stats/save", `{"${cellInfoList[0]} Nations Background": "#${submittedHexValue}"}`);
+            navigator.sendBeacon("/stats/save", `{"${cellInfoList["ID"]} Nations Background": "#${submittedHexValue}"}`);
 
         }, {once: true})
 

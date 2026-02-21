@@ -35,7 +35,7 @@ def update_stats(colony_stats):
 
         # Make monthly backups
         make_backup("data/backups/stats/monthly", colony_stats['last_updated'], "stats.json", monthly=True)
-        make_backup("data/backups/maps/monthly", colony_stats['last_updated'], "colony-map", monthly=True)
+        make_backup("data/backups/maps/monthly", colony_stats['last_updated'], "colony-map.png", monthly=True)
 
         # Update colony wealth and citizens
         for colony in colony_stats["Nations"]:

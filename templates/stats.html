@@ -51,26 +51,25 @@
 
             {% for index, union in union_enumeration %}
             <tr>
-                <td data-cellInfo="{{index}} Unions Name">{{ union.Name }}</td>
-                <td data-cellInfo="{{index}} Unions Leader">{{ union.Leader }}</td>
-                <td data-cellInfo="{{index}} Unions Reserve">${{ union.Reserve }}T</td>
-                <td data-cellInfo="{{index}} Unions Reps.">
+                <td>{{ union.Name }}</td>
+                <td>{{ union.Leader }}</td>
+                <td>${{ union.Reserve }}T</td>
+                <td>
                     <span class="reps">{{union["Reps."]}}</span>
                     <br>
                     {% if union["Rep. Ratio"] != "N/A" %}
                         <div class="rep-ratio">(Citizen to Rep Ratio: {{union["Rep. Ratio"]}}:1)</div>
                     {% endif %}
                 </td>
-                <td data-cellInfo="{{index}} Unions Military">{{ union.Military }}</td>
-                <td data-cellInfo="{{index}} Unions Land">{{ union.Land }}</td>
-                <td data-cellInfo="{{index}} Unions Members">
+                <td>{{ union.Military }}</td>
+                <td>{{ union.Land }}</td>
+                <td>
                     {{ ', '.join(union.Members) }}
                     {% if union["Partial Members"] != [] %}
                         (Partial: {{', '.join(union["Partial Members"])}})
                     {% endif %}
-
                 </td>
-                <td data-cellInfo="{{index}} Unions Other">{{ union["Other Information"] }}</td>
+                <td>{{ union["Other Information"] }}</td>
             </tr>
             {% endfor %}
 
@@ -96,13 +95,13 @@
             {% for index, nation in nation_enumeration %}
                 
             <tr style="background-color: {{nation['Background Color']}}">
-                <td data-cellInfo="{{index}} Nations Name">{{ nation.Name }}</td>
-                <td data-cellInfo="{{index}} Nations Leader">{{ nation.Leader }}</td>
-                <td data-cellInfo="{{index}} Nations Wealth">${{ nation.Wealth }}T</td>
-                <td data-cellInfo="{{index}} Nations Citizens">{{ nation.Citizens }}M</td>
-                <td data-cellInfo="{{index}} Nations Military">{{ nation.Military }}</td>
-                <td data-cellInfo="{{index}} Nations Location/Land">{{ nation["Location/Land"] }}</td>
-                <td data-cellInfo="{{index}} Nations Other">{{ nation["Other Information"] }}</td>
+                <td>{{ nation.Name }}</td>
+                <td>{{ nation.Leader }}</td>
+                <td>${{ nation.Wealth }}T</td>
+                <td>{{ nation.Citizens }}M</td>
+                <td>{{ nation.Military }}</td>
+                <td>{{ nation["Location/Land"] }}</td>
+                <td>{{ nation["Other Information"] }}</td>
             </tr>
             {% endfor %}
 
