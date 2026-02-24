@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="../static/css/styles.css" rel="stylesheet">
+    <style>
+        h1 {
+            font-size: 10rem;
+            padding-top: 7rem;
+        }
+    </style>
+    <title>{{code}} - American Union</title>
+</head>
+<body>
+    <h1>{{code}}</h1>
+    {% if code == 404 %}
+    <h2>Sorry, but this webpage doesn't exist. I don't know what you're doing, but if you're trying to hack us, remember that the American Union is arguably the largest entity in the world and we do have nukes.</h2>
+    {% endif %}
+
+    <h2>{{error | safe }}</h2>
+</body>
+</html>

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body {
+            font-family: 'Courier New', Courier, monospace;
+            font-size: 1.2rem;
+        }
+    </style>
+    <title>A.U. Site Data</title>
+</head>
+<body>
+    <h1>Index of /data</h1>
+
+    {% macro display_file_tree(directory, file_tree) %}
+        <ul>
+            {% for entry in file_tree %}
+                {% if entry is string %}
+                    <li><a href="{{directory}}/{{entry}}">{{entry}}</a></li>
+                {% elif entry is mapping %}
+                    {% for subentry_key, subentry_value in entry.items() %}
+                        <li><strong>{{subentry_key}}</strong></li>
+                        <ul>
+                            {{display_file_tree(directory ~ "/" ~ subentry_key, subentry_value)}}
+                        </ul>
+                    {% endfor %}
+                {% endif %}
+            {% endfor %}
+        </ul>
+    {% endmacro %}
+
+    {{display_file_tree("/data", data_file_tree)}}    
+</body>
+</html>

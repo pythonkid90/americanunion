@@ -1,4 +1,4 @@
-# Beep. Boop. Welcome, robots!
+# Beep. Boop. Hello, robots!
 # The American Union welcomes you.
 # If you're a human, please redirect yourself to humans.txt.
 
@@ -23,6 +23,7 @@ User-agent: Omgili
 Disallow: /
 
 # This site is open to anybody wanting to try their hand at web crawlers or just have some fun.
+# My wiki should be at https://github.com/pythonkid90/americanunion/wiki for all info about the available endpoints.
 # You may access anything on this site, just please don't destroy all my precious data, or I will find your address and personally eat your pasta.
 # But seriously, I will block anybody who nukes my site.
 User-agent: *

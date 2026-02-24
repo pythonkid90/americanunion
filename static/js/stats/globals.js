@@ -11,6 +11,7 @@ export function getCellInfo(cell) {
     cellInfoList["Column"] = columns[Array.prototype.indexOf.call(cell.parentNode.querySelectorAll("td"), cell)];
     
     // Get row ID, finds the indexOf the row (cell.parentNode) on the array of tr, but subtract 1 for first row which is headings
+    console.log(cell, cell.parentNode)
     cellInfoList["ID"] = Array.prototype.indexOf.call(cell.closest("table").querySelectorAll("tr"), cell.parentNode) - 1;
 
     return cellInfoList;
@@ -28,11 +29,11 @@ export function addUpdatedCell(cellToEdit, cellIsNew=false) {
     cellsEdited.set(Object.values(cellInfoList).join(" "), cellToEdit.textContent);
 }
 
-export function sendUpdatedCells() {
+export function sendUpdatedCells(body=JSON.stringify(Object.fromEntries(cellsEdited))) {
     fetch("/stats/save", {
         method: 'PUT', 
         headers: {'Content-Type': 'application/json; charset=UTF-8'}, 
-        body: JSON.stringify(Object.fromEntries(cellsEdited))
+        body: body
     })
     .catch((error) => {console.error('Error:', error)});
 

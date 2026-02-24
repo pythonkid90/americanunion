@@ -21,8 +21,8 @@
     <br><br>
 
     <div class="action-buttons">
-        <button class="button-pill" id="delete-row"><img src="/static/images/trash.svg"></button>
-        <button class="button-pill" id="paint-row"><img src="/static/images/brush.svg"></button>
+        <button class="button-pill" id="delete-row"><img src="/static/images/icons/trash.svg"></button>
+        <button class="button-pill" id="paint-row"><img src="/static/images/icons/brush.svg"></button>
         <!-- <button class="button-pill"><img src="/static/images/sliders.svg"></button> -->
     </div>
 
@@ -65,7 +65,7 @@
                 <td>{{ union.Land }}</td>
                 <td>
                     {{ ', '.join(union.Members) }}
-                    {% if union["Partial Members"] != [] %}
+                    {% if union["Partial Members"] %}
                         (Partial: {{', '.join(union["Partial Members"])}})
                     {% endif %}
                 </td>
@@ -110,7 +110,7 @@
 
     <br><br>
 
-    <img id="colony-map" src="data/colony-map.png" width="1000">
+    <img id="colony-map" src="/data/colony-map.png" width="1000">
     <p class="img-sub">Striped means disputed territory.</p>
 
     <div id="map-buttons">
@@ -118,7 +118,7 @@
             Upload Map
         </label>
         <input type="file" id="map-upload" accept="image/png" style="display: none;">
-        <a id="map-download" href="data/colony-map.png" download>Download Map</a>
+        <a id="map-download" href="/data/colony-map.png" download>Download Map</a>
     </div>
     
     <br><br>

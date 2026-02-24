@@ -1,19 +1,20 @@
 from api.pythonapi.helpers import keep_digits, parse_cell_data, format_cell_data, unions_columns, nations_columns
 from api.pythonapi.update_stats import sync_stats, update_stats, calculate_reps, write_stats, make_backup
 
-from flask import Flask, render_template, request, send_from_directory, abort
+from flask import Flask, render_template, request, send_from_directory
 from werkzeug.security import check_password_hash
+from werkzeug.exceptions import HTTPException
 import json
 import time
+import os
+import logging
 
 app = Flask(__name__)
+app.config['TEMPLATES_AUTO_RELOAD'] = True
 
-@app.route('/data/<filename>')
-def get_file(filename):
-    try:
-        return send_from_directory("data", filename)
-    except FileNotFoundError:
-        abort(404)
+# ---------
+# WEB PAGES ----
+# ---------
 
 @app.route('/')
 def index():
@@ -25,6 +26,10 @@ def createdocument():
 
 @app.route('/stats')
 def stats():
+    colony_stats = sync_stats()
+    colony_stats = sync_stats()
+    colony_stats = sync_stats()
+    colony_stats = sync_stats()
     colony_stats = sync_stats()
     update_stats(colony_stats)
 
@@ -43,6 +48,10 @@ def stats():
                            nation_enumeration=enumerate(colony_stats["Nations"]), 
                            union_enumeration=enumerate(colony_stats["Unions"]))
 
+# ---
+# API ----
+# ---
+
 @app.put('/stats/save')
 def save_stats():
     colony_stats = sync_stats()
@@ -57,11 +66,8 @@ def save_stats():
 
     calculate_reps(colony_stats)
     write_stats(colony_stats)
-
-    with open("data/stats.json", "w") as stats:
-        json.dump(colony_stats, stats, indent=4)
                 
-    return "Success", 200
+    return "All cells modified if requests are valid", 201
 
 @app.post('/stats/new')
 def new_rows():
@@ -75,23 +81,23 @@ def new_rows():
     for row_key in new_rows:
         entity_index, entity_type = row_key.split(maxsplit=1)
         entity_index, entity_type = keep_digits(entity_index) + 1, entity_type.title()
+        print(entity_index)
         columns = unions_columns if entity_type == "Unions" else nations_columns
-
+        if "Background" in columns:
+            columns.remove("Background")
         new_row_keys = list(new_rows[row_key].keys())
-        if "Background" in new_row_keys:
-            new_row_keys.remove("Background")
 
         if columns == new_row_keys:
-            colony_stats[entity_type].insert(entity_index, {"Rep. Ratio": 100000, "Background Color": "FFFFFF"})
+            colony_stats[entity_type].insert(entity_index, {"Rep. Ratio": 100000, "Background Color": "#FFFFFF"})
 
             for column in new_rows[row_key]:
                 new_cell_data = new_rows[row_key][column]
                 format_cell_data(colony_stats, new_cell_data, entity_index, entity_type, column, True)
-
+    
     calculate_reps(colony_stats)
     write_stats(colony_stats)
 
-    return "Success", 200
+    return "All new rows with correct columns created.", 201
 
 @app.delete('/stats/delete/<entity_type>/<row_id>')
 def delete_row(entity_type, row_id):
@@ -104,8 +110,7 @@ def delete_row(entity_type, row_id):
     except ValueError:
         return "Invalid entity type or row ID. Entity types can only be 'Unions' or 'Nations' and row IDs are positive integers. This is a ValueError, so you did not recieve this beccause your ID is out of range, but it could be malformed.", 400
 
-    return "Success", 200
-
+    return "Row deleted.", 200
 
 @app.post('/stats/internal_update')
 def internal_update_stats():
@@ -145,22 +150,64 @@ def internal_update_stats():
     else:
         return "Unauthorized. This endpoint is only for my use and you don't have the password. HAHAHAHAHA", 401
 
-    return "Success", 200
+    return "New stats uploaded. I hope you didn't put anything messed up in there.", 201
 
 @app.put('/stats/map_upload')
 def upload_map():
     if request.files["new-colony-map"].content_type == "image/png":
-        request.files["new-colony-map"].save("data/colony-map.png")
+        make_backup("data/backups/maps", f"before_{time.time()}", "colony-map.png")
 
-        make_backup("data/backups/maps", "before_" + str(time.time()), "colony-map.png")
+        request.files["new-colony-map"].save("data/colony-map.png")        
 
-        return "Success", 200
+        return "New map uploaded. There is no endpoint to download the previous map, so you have to download it from the frontend before uploading your map.", 201
     else:
         return "Wrong media type. We only accept PNGs (image/png content type header) around here, and this town ain't big enough for the two major image file types.", 415
 
-@app.route('/<file>')
-def static_page(file):
-    return send_from_directory(f'static/pages/{file}')
+# ------------------
+# SPECIAL AND STATIC ----
+# ------------------
+
+@app.route('/<path:file>')
+def static_file(file):
+    if file.startswith("data"):
+        return send_from_directory("", file)
+    else:
+        return send_from_directory(directory="static/pages", path=f"{file}")
+
+@app.route('/data/')
+def data_index():
+    data_file_tree = []
+    def get_file_tree(directory, file_index):
+        with os.scandir(directory) as entries:
+            for entry in entries:
+                if entry.is_file():
+                    file_index.append(entry.name)
+                elif entry.is_dir():
+                    existing_dict_folders = [item for item in file_index if isinstance(item, dict)]
+                    if existing_dict_folders: # If the list has some stuff in it
+                        existing_dict_folders[0][entry.name] = []
+                        subdirectory_index = file_index.index(existing_dict_folders[0])
+                    else:
+                        file_index.append({entry.name: []})
+                        subdirectory_index = file_index.index({entry.name: []})
+                    
+                    get_file_tree(os.path.join(directory, entry.name), file_index[subdirectory_index][entry.name])
+
+    get_file_tree("data", data_file_tree)
+
+    return render_template("dataindex.html", data_file_tree=data_file_tree, os=os)
+
+@app.errorhandler(Exception)
+def error_happened(error):
+    if isinstance(error, HTTPException):
+        return render_template("error.html", code=error.code, error=error.description), error.code
+    elif __name__ != '__main__':
+        return render_template("error.html", code=500, error=f"Internal server error ({error}). Something is wrong with the code, \
+            or maybe user data wasn't sanitized properly. A fix will be pushed soon if the Union becomes aware of a recurring bug."), 500
 
 if __name__ == '__main__':
+    class Remove304(logging.Filter):
+        def filter(self, record): return ' 304 -' not in record.getMessage()
+    logging.getLogger('werkzeug').addFilter(Remove304())
+
     app.run(debug=True)

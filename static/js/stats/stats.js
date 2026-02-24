@@ -21,7 +21,7 @@ function editCell(event) {
             } else if (event.clientY - rect.top <= 10) {
                 createNewRow(cellToEdit, "top");
             } else {
-                event.target.setAttribute("contenteditable", "true");
+                event.target.setAttribute("contenteditable", "plaintext-only");
                 event.target.setAttribute("spellcheck", "false");
                 event.target.focus();
             }    

@@ -1,8 +1,5 @@
 To-do:
 - Undo and redo buttons for AU website (ctrl-z and ctrl-y), probably on riight corner, do using backup system or using JS list
 - Give previous hex already put in input when recoloring nation rather than just whatever was already in input
-- Confirmation for deletion
-- Nation search bar (ctrl-f)
 - Finish up all election scripts and get Python wrapper for rust API
-- Security Market
-- Make backups publicly available
+

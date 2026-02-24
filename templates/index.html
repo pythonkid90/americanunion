@@ -7,13 +7,16 @@
     <link rel="icon" type="image/png" href="static/images/favicon.png">
 
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Audiowide&family=Electrolize&family=Ultra&display=swap');
-
+        @font-face {
+            font-family: 'Audiowide';
+            src: url('{{ url_for("static", filename="images/Audiowide/Audiowide-Regular.ttf") }}') format('truetype');
+            font-weight: normal; font-style: normal; font-display: swap;
+        }
         * {
             box-sizing: border-box;
         }
         body {
-            font-family: "Audiowide", serif;
+            font-family: 'Audiowide', 'Courier New', Courier, monospace;
             margin: 0;
             text-align: center;
         }

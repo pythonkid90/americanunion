@@ -1,15 +1,20 @@
 import {addUpdatedCell, sendUpdatedCells, getCellInfo, unions_columns, nations_columns} from './globals.js';
 
 export function createNewRow(cellToEdit, locationClicked) {
+    console.log(locationClicked)
     const newRow = document.createElement("tr");
+
+    const cellInfoList = getCellInfo(cellToEdit);
 
     if (locationClicked == "bottom") { 
         cellToEdit.parentNode.after(newRow); 
     } else { 
         cellToEdit.parentNode.before(newRow); 
+        cellInfoList["ID"] -= 1;
     }
 
-    const cellInfoList = getCellInfo(cellToEdit)
+    
+    console.log(cellInfoList)
     const tableID = cellInfoList["Table"];
 
     const columns = (tableID === "unions") ? unions_columns : nations_columns;

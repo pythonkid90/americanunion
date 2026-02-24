@@ -1,4 +1,4 @@
-import {rowSelectInfo} from './globals.js';
+import {rowSelectInfo, sendUpdatedCells} from './globals.js';
 
 export function activateDeleteOrPaintButtons(event) {
     let popup = document.querySelector("#action-instructions")
@@ -55,7 +55,8 @@ export function deleteOrPaintRows(rowClicked, cellInfoList) {
 
             const submittedHexValue = document.querySelector("#repaint-hex").value
             rowClicked.style.backgroundColor = `#${submittedHexValue}`
-            navigator.sendBeacon("/stats/save", `{"${cellInfoList["ID"]} Nations Background": "#${submittedHexValue}"}`);
+            
+            sendUpdatedCells(`{"${cellInfoList["ID"]} Nations Background": "#${submittedHexValue}"}`);
 
         }, {once: true})
 
