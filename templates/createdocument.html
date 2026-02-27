@@ -19,6 +19,10 @@
             content: '13pt' !important;
         }
 
+        .ql-picker.ql-size * {
+            color: #444
+        }
+
         {% for i in range(1, 21) %}
             .ql-snow .ql-picker.ql-size .ql-picker-label[data-value="{{ i }}pt"]::before,
             .ql-snow .ql-picker.ql-size .ql-picker-item[data-value="{{ i }}pt"]::before {
@@ -46,12 +50,7 @@
         const Size = Quill.import('attributors/style/size');
         Size.whitelist = fontSizes;
         Quill.register(Size, true);
-        
-        /*
-        const Font = Quill.import('attributors/style/font');
-        Font.whitelist = ['times-new-roman'];
-        Quill.register(Font, true);*/
-
+            
         const quill = new Quill('#editor', {
             modules: {
                 toolbar: [
@@ -59,11 +58,10 @@
                     ['blockquote', 'code-block'],
                     ['link', 'image', 'video', 'formula'],
 
-                    [{ 'header': 1 }, { 'header': 2 }],
+                    [{ 'header': 1 }, { 'header': 2 }, { 'header': 3 }],
                     [{ 'list': 'ordered'}, { 'list': 'bullet' }, { 'list': 'check' }],
                     [{ 'script': 'sub'}, { 'script': 'super' }],
                     [{ 'indent': '-1'}, { 'indent': '+1' }],
-                    [{ 'direction': 'ltr' }],
                     [{ 'size': fontSizes}],
                     [{ 'color': [] }, { 'background': [] }],
                     [{ 'align': [] }],
@@ -74,9 +72,11 @@
             theme: 'snow'
         });
 
-        quill.format('size', '13pt');
-
+        quill.format('size', "13pt");
         quill.focus();
+
+        quill.root.innerHTML
+
     </script>
 </html>
 

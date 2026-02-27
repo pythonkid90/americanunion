@@ -27,10 +27,6 @@ def createdocument():
 @app.route('/stats')
 def stats():
     colony_stats = sync_stats()
-    colony_stats = sync_stats()
-    colony_stats = sync_stats()
-    colony_stats = sync_stats()
-    colony_stats = sync_stats()
     update_stats(colony_stats)
 
     total_population = sum(keep_digits(nation["Citizens"], float_allowed=True) for nation in colony_stats["Nations"])
@@ -81,10 +77,12 @@ def new_rows():
     for row_key in new_rows:
         entity_index, entity_type = row_key.split(maxsplit=1)
         entity_index, entity_type = keep_digits(entity_index) + 1, entity_type.title()
-        print(entity_index)
         columns = unions_columns if entity_type == "Unions" else nations_columns
+        
         if "Background" in columns:
             columns.remove("Background")
+        elif "Partial Members" in columns:
+            columns.remove("Partial Members")
         new_row_keys = list(new_rows[row_key].keys())
 
         if columns == new_row_keys:
@@ -162,6 +160,14 @@ def upload_map():
         return "New map uploaded. There is no endpoint to download the previous map, so you have to download it from the frontend before uploading your map.", 201
     else:
         return "Wrong media type. We only accept PNGs (image/png content type header) around here, and this town ain't big enough for the two major image file types.", 415
+
+@app.post('/create/save/<document_name>')
+def save_document(document_name):
+    document_html = request.data.decode('utf-8')
+    with open(f"data/{document_name}", "w") as new_doc:
+        new_doc.write(document_html)
+
+    return "Document Created", 200
 
 # ------------------
 # SPECIAL AND STATIC ----

@@ -17,16 +17,11 @@ export function getCellInfo(cell) {
     return cellInfoList;
 }
 
-export function addUpdatedCell(cellToEdit, cellIsNew=false) {
+export function addUpdatedCell(cellToEdit) {
     cellToEdit.removeAttribute("contenteditable");
     cellToEdit.removeAttribute("spellcheck");
 
-    let cellInfoList = getCellInfo(cellToEdit)
-    // if (cellIsNew) {
-    //     cellInfoList["ID"] += " newCell"
-    // }
-
-    cellsEdited.set(Object.values(cellInfoList).join(" "), cellToEdit.textContent);
+    cellsEdited.set(Object.values(getCellInfo(cellToEdit)).join(" "), cellToEdit.textContent);
 }
 
 export function sendUpdatedCells(body=JSON.stringify(Object.fromEntries(cellsEdited))) {

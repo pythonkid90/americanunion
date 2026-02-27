@@ -8,3 +8,18 @@ body {
 h2 {
     margin-bottom: 0.5em;
 }
+
+#button-collection * {
+    border-radius: 10px;
+    border: 1px solid gray;
+    padding: 0.3rem;
+    font-size: 1.2rem;
+    margin: 0rem 0.3rem;
+    display: inline-flex;
+    color: black;
+    text-decoration: none;
+}
+#button-collection *:hover {
+    cursor: pointer;
+    background-color: lightgray;
+}

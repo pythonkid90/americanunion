@@ -50,10 +50,16 @@ export function deleteOrPaintRows(rowClicked, cellInfoList) {
     } else if (rowClicked.closest("section").id === "nations") {
         document.querySelector("#repaint").style.display = "block";
 
+        const canvas_for_color_hex = document.createElement('canvas')
+        canvas_for_color_hex.getContext('2d').strokeStyle = rowClicked.style.backgroundColor
+        document.querySelector("#repaint-hex").value = canvas_for_color_hex.getContext('2d').strokeStyle.replace("#", "")
+        canvas_for_color_hex.remove()
+
         document.querySelector("#repaint-submit").addEventListener("click", function() {
             document.querySelector("#repaint").style.display = "none";
 
-            const submittedHexValue = document.querySelector("#repaint-hex").value
+            const submittedHexValue = document.querySelector("#repaint-hex").value.replace("#", "")
+            
             rowClicked.style.backgroundColor = `#${submittedHexValue}`
             
             sendUpdatedCells(`{"${cellInfoList["ID"]} Nations Background": "#${submittedHexValue}"}`);

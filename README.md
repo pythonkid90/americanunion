@@ -25,7 +25,6 @@ Once all in progress and high priority features are completed and the project is
 - Undo and redo changes buttons in case something was not meant to be deleted, using buttons along with CTRL-Z and CTRL-Y.
 - Saving functionality for the AUT/DGD editor, using the separate GitHub repo.
 - A person lookup listing notable people from AUTs and DGDs, using descriptions from those documents as well as creating age, gender, nationality, etc.
-- 
 
 #### Low Priority - May Be Scrapped
 - A login system before editing using a global password for everybody that persists forever on the device.

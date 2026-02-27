@@ -13,7 +13,6 @@ body, #unions {
     font-weight: bold;
 }
 
-
 .action-buttons {
     position: fixed;
     top: 0;
@@ -73,19 +72,7 @@ body, #unions {
     border: 1px solid gray;
     padding: 0.3rem;
 }
-#map-buttons * {
-    border-radius: 10px;
-    border: 1px solid gray;
-    padding: 0.3rem;
-    font-size: 1.2rem;
-    margin: 0rem 0.3rem;
-    display: inline-flex;
-    color: black;
-    text-decoration: none;
-}
-#map-buttons *:hover {
-    cursor: pointer;
-}
+
 #repaint-hex {
     margin-top: 1rem;
 }
@@ -93,7 +80,7 @@ body, #unions {
     background-color: #08f;
     color: white;
 }
-#repaint-cancel, #map-buttons *:hover {
+#repaint-cancel {
     background-color: lightgray;
 }
 
